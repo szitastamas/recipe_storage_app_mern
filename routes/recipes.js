@@ -8,6 +8,9 @@ router.get('/', (req, res) => {
     res.send('Get own recipes...');
 })
 
+// @route   GET api/recipes/:id
+// @desc    Get one specific recipe
+// @access  Private
 router.get('/:id', (req, res)=>{
     res.send('Getting one recipe...')
 })
