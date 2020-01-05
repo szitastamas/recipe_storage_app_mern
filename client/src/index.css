@@ -29,6 +29,12 @@ select {
 	display: block;
 }
 
+#add-form {
+	opacity: 0;
+	transform: translateY(-15px);
+	animation: fadeIn 600ms forwards;
+}
+
 @keyframes fadeIn {
 	100% {
 		transform: none;

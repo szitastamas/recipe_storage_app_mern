@@ -1,5 +1,4 @@
 import React from 'react';
-import RecipeContext from '../../contexts/recipe/RecipeContext';
 import PropTypes from 'prop-types';
 
 const RecipeItem = ({ recipe, index }) => {

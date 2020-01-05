@@ -42,7 +42,7 @@ export const AddRecipeForm = () => {
 
 	return (
 		<Fragment>
-			<form onSubmit={handleSubmit}>
+			<form id='add-form' onSubmit={handleSubmit}>
 				<div className='input-field'>
 					<input type='text' name='title' id='title' value={recipe.title} onChange={handleChange} />
 					<label htmlFor='title'>Title</label>
@@ -87,7 +87,7 @@ export const AddRecipeForm = () => {
 						<input type='text' className='file-path validate' placeholder='Upload photo' />
 					</div>
 				</div>
-				<button type='submit' className='teal btn'>
+				<button type='submit' className='btn waves-effect waves-light'>
 					Add Recipe
 				</button>
 			</form>
