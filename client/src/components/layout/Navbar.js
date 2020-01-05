@@ -27,6 +27,16 @@ const Navbar = ({ title, icon }) => {
               </NavLink>
             </li>
             <li>
+              <NavLink className="teal-text link-tag" to="/login">
+                Login
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="teal-text link-tag" to="/register">
+                Register
+              </NavLink>
+            </li>
+            <li>
               <NavLink className="teal-text link-tag" to="/dashboard">
                 Dashboard
               </NavLink>
@@ -49,6 +59,16 @@ const Navbar = ({ title, icon }) => {
         <li>
           <NavLink className="teal-text" to="/">
             Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="teal-text link-tag" to="/login">
+            Login
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="teal-text link-tag" to="/register">
+            Register
           </NavLink>
         </li>
         <li>

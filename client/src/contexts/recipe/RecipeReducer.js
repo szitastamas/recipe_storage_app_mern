@@ -5,7 +5,8 @@ import {
 	CLEAR_CURRENT,
 	UPDATE_RECIPE,
 	FILTER_RECIPES,
-	CLEAR_FILTER
+	CLEAR_FILTER,
+	GET_PUBLIC_RECIPES
 } from '../reducerTypes';
 
 export default (state, action) => {
@@ -15,6 +16,12 @@ export default (state, action) => {
 				...state,
 				recipes: [action.payload, ...state.recipes]
 			};
+		case GET_PUBLIC_RECIPES:
+			return{
+				...state,
+				recipes: action.payload,
+				loading: false
+			}
 		default:
 			return state;
 	}

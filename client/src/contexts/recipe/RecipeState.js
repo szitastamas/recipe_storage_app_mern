@@ -4,6 +4,8 @@ import axios from "axios";
 import RecipeContext from "./RecipeContext";
 import RecipeReducer from "./RecipeReducer";
 import {
+  GET_PUBLIC_RECIPES,
+  CLEAR_RECIPES,
   ADD_RECIPE,
   DELETE_RECIPE,
   SET_CURRENT,
@@ -15,10 +17,29 @@ import {
 
 const RecipeState = props => {
   const initialState = {
-    recipes: []
+    recipes: [],
+    loading: true
   };
 
   const [state, dispatch] = useReducer(RecipeReducer, initialState);
+
+  //Get all recipes
+
+  const getPublicRecipes = async () => {
+    try {
+      const res = await axios.get("/api/recipes/public")
+      res.data.map(rec => {
+        rec.date = rec.date.slice(0,10).replace(/-/g,'/');
+      })
+      dispatch({
+        type: GET_PUBLIC_RECIPES,
+        payload: res.data
+      })
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   // Add recipe
   const addRecipe = recipe => {
@@ -29,18 +50,6 @@ const RecipeState = props => {
     });
   };
 
-  // const fetchPublicRecipes = async () => {
-  // const res = await axios("/api/recipes/public");
-  // const fetchedRecipes = await res.data;
-
-  // fetchedRecipes.forEach(rec => {
-  // 	rec.date = rec.date.slice(0,10).replace(/-/g,'.');
-  // })
-
-  // fetchedRecipes.map(rec => {
-  // 	addRecipe(rec);
-  // })
-  // };
   // Update recipe
 
   // Delete recipe
@@ -57,7 +66,9 @@ const RecipeState = props => {
     <RecipeContext.Provider
       value={{
         recipes: state.recipes,
-        addRecipe
+        addRecipe,
+        getPublicRecipes,
+        loading: state.loading
       }}
     >
       {props.children}

@@ -7,6 +7,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import RecipeState from './contexts/recipe/RecipeState';
 import Dashboard from './components/pages/Dashboard';
+import RegisterForm from './components/forms/RegisterForm';
+import LoginForm from './components/forms/LoginForm';
 
 // TODO - It will always be the public recipes of all users from the backend
 // that are displayed on the Home page. In Home's useEffect() I can fetch those.
@@ -22,6 +24,8 @@ const App = () => {
 					<div className='container'>
 						<Switch>
 							<Route exact path='/' component={Home} />
+							<Route exact path='/login' component={LoginForm} />
+							<Route exact path='/register' component={RegisterForm} />
 							<Route exact path='/dashboard' component={Dashboard} />
 							<Route exact path='/about' component={About} />
 							<Route exact path='/contact' component={Contact} />

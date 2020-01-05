@@ -14,7 +14,7 @@ const AuthState = (props) => {
 
 	return (
 		<AuthContext.Provider value={{
-			state
+			isAuthenticated: state.isAuthenticated
 		}}>
 			{props.children}
 		</AuthContext.Provider>

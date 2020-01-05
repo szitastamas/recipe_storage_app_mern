@@ -1,3 +1,5 @@
+export const GET_PUBLIC_RECIPES = 'GET_PUBLIC_RECIPES';
+export const CLEAR_RECIPES = 'CLEAR_RECIPES';
 export const ADD_RECIPE = 'ADD_RECIPE';
 export const DELETE_RECIPE = 'DELETE_RECIPE';
 export const CLEAR_RECIPE = 'CLEAR_RECIPE';
