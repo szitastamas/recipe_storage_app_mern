@@ -7,9 +7,12 @@ const Recipes = () => {
 
 	const { recipes } = recipeContext;
 
+	const publicRecipes = recipes.filter((r) => r.privacy !== 'private');
+
 	return (
 		<Fragment>
-			{recipes.map((recipe, index) => {
+			<h2 className='flow-text'>Recently uploaded public recipes</h2>
+			{publicRecipes.map((recipe, index) => {
 				return <RecipeItem key={recipe.id} recipe={recipe} index={index} />;
 			})}
 		</Fragment>

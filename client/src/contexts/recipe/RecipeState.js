@@ -33,7 +33,7 @@ const RecipeState = (props) => {
 				description:
 					'Use water, fruits and sugar. Put the fruits into the water and start cooking it. Once the fruits are soft you can add the beautiful Schmand.',
 				type: 'soup',
-				privacy: 'public',
+				privacy: 'private',
 				date: '2019.12.05'
 			},
 			{
@@ -44,6 +44,15 @@ const RecipeState = (props) => {
 				type: 'dessert',
 				privacy: 'public',
 				date: '1971.02.21'
+			},
+			{
+				id: 4,
+				title: 'spiegelei',
+				description:
+					'The mastery of creating the perfect Spiegelei is hard. You have to precisely add the eggs to the hot pan and wait until they get a crust on the bottom!',
+				type: 'main',
+				privacy: 'public',
+				date: '2018.04.11'
 			}
 		]
 	};

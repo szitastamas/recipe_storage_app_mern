@@ -1,12 +1,15 @@
 import React from 'react';
 import Recipes from '../recipes/Recipes';
+import { AddRecipeForm } from '../forms/AddRecipeForm';
 
 const Home = () => {
 	return (
-		<div className='container'>
+		<div>
 			<div className='row'>
-				<div className='col s4'>{/* Form Component Incoming */}</div>
-				<div className='col s7 offset-s1'>
+				<div className='col s12 l6 center-align'>
+					<AddRecipeForm />
+				</div>
+				<div className='col s12 l6'>
 					<Recipes />
 				</div>
 			</div>

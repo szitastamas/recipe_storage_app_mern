@@ -1,18 +1,27 @@
 import React from 'react';
+import RecipeContext from '../../contexts/recipe/RecipeContext';
+import PropTypes from 'prop-types';
 
 const RecipeItem = ({ recipe, index }) => {
 	return (
 		<div className='card recipe-card' style={{ animationDelay: index * 70 + 'ms' }}>
 			<div className='card-content'>
-				<span className='card-title'>{recipe.title}</span>
+				<span className='card-title' style={capitalize}>
+					{recipe.title} <span className='badge'>{recipe.type}</span>
+				</span>
 				<p>{recipe.description}</p>
 			</div>
 			<div className='card-action center teal lighten-4'>
-				<p>Created on {recipe.date}</p>
-				<div className='badge green right'>{recipe.privacy === 'public' ? 'public' : 'private'}</div>
+				<span>Created on {recipe.date}</span>
 			</div>
 		</div>
 	);
 };
+
+RecipeItem.propTypes = {
+	recipe: PropTypes.object.isRequired
+};
+
+const capitalize = { textTransform: 'capitalize' };
 
 export default RecipeItem;

@@ -25,6 +25,10 @@ code {
 	animation: fadeIn 400ms forwards;
 }
 
+select {
+	display: block;
+}
+
 @keyframes fadeIn {
 	100% {
 		transform: none;
