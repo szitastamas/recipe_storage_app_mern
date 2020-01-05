@@ -1,21 +1,60 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import RecipeContext from '../../contexts/recipe/RecipeContext';
 
 export const AddRecipeForm = () => {
-	const handleClick = (e) => {
+	const [recipe, setRecipe] = useState({
+		title: '',
+		description: '',
+		type: 'soup',
+		privacy: 'public',
+		date: new Date()
+			.toJSON()
+			.slice(0, 10)
+			.replace(/-/g, '.')
+	});
+
+	const recipeContext = useContext(RecipeContext);
+
+	const { addRecipe } = recipeContext;
+
+	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('Form submitted.');
+		addRecipe(recipe);
+
+		setRecipe({
+			title: '',
+			description: '',
+			type: 'soup',
+			privacy: 'public',
+			date: new Date()
+				.toJSON()
+				.slice(0, 10)
+				.replace(/-/g, '.')
+		});
+	};
+
+	const handleChange = (e) => {
+		setRecipe({
+			...recipe,
+			[e.target.id]: e.target.value
+		});
 	};
 
 	return (
 		<Fragment>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<div className='input-field'>
-					<input type='text' name='title' id='title' />
+					<input type='text' name='title' id='title' value={recipe.title} onChange={handleChange} />
 					<label htmlFor='title'>Title</label>
 				</div>
 				<div className='input-field'>
-					<input type='text' name='description' id='description' />
+					<input
+						type='text'
+						name='description'
+						id='description'
+						value={recipe.description}
+						onChange={handleChange}
+					/>
 					<label htmlFor='description'>Description</label>
 				</div>
 				<div className='row'>
@@ -23,7 +62,7 @@ export const AddRecipeForm = () => {
 						<label htmlFor='type' className='left'>
 							Food type select
 						</label>
-						<select id='type'>
+						<select id='type' value={recipe.type} onChange={handleChange}>
 							<option value='soup'>Soup</option>
 							<option value='main'>Main</option>
 							<option value='dessert'>Dessert</option>
@@ -33,7 +72,7 @@ export const AddRecipeForm = () => {
 						<label htmlFor='privacy' className='left'>
 							Privacy option select
 						</label>
-						<select id='privacy'>
+						<select id='privacy' value={recipe.privacy} onChange={handleChange}>
 							<option value='public'>Public</option>
 							<option value='private'>Private</option>
 						</select>
@@ -48,7 +87,7 @@ export const AddRecipeForm = () => {
 						<input type='text' className='file-path validate' placeholder='Upload photo' />
 					</div>
 				</div>
-				<button type='submit' className='teal btn' onClick={handleClick}>
+				<button type='submit' className='teal btn'>
 					Add Recipe
 				</button>
 			</form>

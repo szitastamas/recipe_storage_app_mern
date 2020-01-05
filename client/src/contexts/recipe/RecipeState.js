@@ -3,7 +3,7 @@ import uuid from 'uuid';
 import RecipeContext from './RecipeContext';
 import RecipeReducer from './RecipeReducer';
 import {
-	ADD_CONTACT,
+	ADD_RECIPE,
 	DELETE_RECIPE,
 	SET_CURRENT,
 	CLEAR_CURRENT,
@@ -60,7 +60,13 @@ const RecipeState = (props) => {
 	const [state, dispatch] = useReducer(RecipeReducer, initialState);
 
 	// Add recipe
-
+	const addRecipe = (recipe) => {
+		recipe.id = uuid();
+		dispatch({
+			type: ADD_RECIPE,
+			payload: recipe
+		});
+	};
 	// Update recipe
 
 	// Delete recipe
@@ -76,7 +82,8 @@ const RecipeState = (props) => {
 	return (
 		<RecipeContext.Provider
 			value={{
-				recipes: state.recipes
+				recipes: state.recipes,
+				addRecipe
 			}}
 		>
 			{props.children}
