@@ -1,22 +1,33 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+		'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.tabs{
-  justify-content: flex-end;
+.tabs {
+	justify-content: flex-end;
 }
 
-.link-tag{
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+.link-tag {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+
+.recipe-card {
+	opacity: 0;
+	transform: translateX(25px);
+	animation: fadeIn 400ms forwards;
+}
+
+@keyframes fadeIn {
+	100% {
+		transform: none;
+		opacity: 1;
+	}
 }
