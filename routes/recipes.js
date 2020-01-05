@@ -24,8 +24,16 @@ router.get('/', auth, async (req, res) => {
 // @route   GET api/recipes/:id
 // @desc    Get one specific recipe
 // @access  Private
-router.get('/:id', (req, res)=>{
-    res.send('Getting one recipe...')
+router.get('/public', async (req, res)=>{
+    
+    try {
+        const recipes = await Recipe.find( { privacy: 'public' } )
+        res.json(recipes);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+
 })
 
 // @route   POST api/recipes

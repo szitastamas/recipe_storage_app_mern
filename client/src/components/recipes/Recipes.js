@@ -1,22 +1,29 @@
-import React, { useContext, Fragment } from 'react';
-import RecipeContext from '../../contexts/recipe/RecipeContext';
-import RecipeItem from './RecipeItem';
+import React, { useContext, Fragment } from "react";
+import RecipeContext from "../../contexts/recipe/RecipeContext";
+import RecipeItem from "./RecipeItem";
 
 const Recipes = () => {
-	const recipeContext = useContext(RecipeContext);
+  const recipeContext = useContext(RecipeContext);
+  const { recipes } = recipeContext;
 
-	const { recipes } = recipeContext;
+  // const title = isAuth
+  //   ? "You can see all your uploaded recipes here"
+  //   : "Most recently uploaded public recipes";
 
-	const publicRecipes = recipes.filter((r) => r.privacy !== 'private');
+  const title = "Most recently uploaded public recipes"
 
-	return (
-		<Fragment>
-			<h2 className='flow-text'>Recently uploaded public recipes</h2>
-			{publicRecipes.map((recipe, index) => {
-				return <RecipeItem key={recipe.id} recipe={recipe} index={index} />;
-			})}
-		</Fragment>
-	);
+  const filteredRecipes =  recipes.filter(r => r.privacy !== "private");
+
+  return (
+    <Fragment>
+      <h2 className="flow-text">{title}</h2>
+      <div className="home-recipe-grid">
+        {filteredRecipes.map((recipe, index) => {
+          return <RecipeItem key={recipe.id} recipe={recipe} index={index} />;
+        })}
+      </div>
+    </Fragment>
+  );
 };
 
 export default Recipes;
