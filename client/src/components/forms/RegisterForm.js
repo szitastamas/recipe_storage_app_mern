@@ -22,7 +22,7 @@ const RegisterForm = () => {
     }
 
     return (
-        <div className="container">
+        <div className="container form-container">
             <form onSubmit={handleLoginSubmit}>
                 <div className="input-field">
                     <input type="text" name="name" id="name" value={registerData.name} onChange={handleChange}/>

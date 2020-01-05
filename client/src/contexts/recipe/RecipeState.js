@@ -35,7 +35,7 @@ const RecipeState = props => {
         type: GET_PUBLIC_RECIPES,
         payload: res.data
       })
-
+      
     } catch (err) {
       console.log(err);
     }

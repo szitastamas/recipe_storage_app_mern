@@ -29,6 +29,10 @@ select {
 	display: block;
 }
 
+.form-container{
+	max-width: 23rem;
+}
+
 #add-form {
 	opacity: 0;
 	transform: translateY(-15px);
@@ -45,5 +49,36 @@ select {
 	100% {
 		transform: none;
 		opacity: 1;
+	}
+}
+
+#loading-div{
+	width: 70px;
+	height: 100px;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	justify-self: center;
+	margin: 5rem auto;
+}
+
+.loading-dot{
+	height: 10px;
+	width: 10px;
+	border-radius: 50%;
+	background: teal;
+	animation: bounce 1000ms infinite;
+}
+
+.loading-dot:nth-child(2){
+	animation-delay: 100ms;
+}
+.loading-dot:nth-child(3){
+	animation-delay: 200ms;
+}
+
+@keyframes bounce{
+	50%{
+		transform: translateY(15px) scale(.8);
 	}
 }

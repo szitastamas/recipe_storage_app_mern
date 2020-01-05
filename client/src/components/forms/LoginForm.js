@@ -19,7 +19,7 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="container">
+        <div className="container form-container">
             <form onSubmit={handleLoginSubmit}>
                 <div className="input-field">
                     <input type="email" name="email" id="email" value={loginData.email} onChange={handleChange}/>
