@@ -1,79 +1,78 @@
-import React, { useReducer, useEffect } from "react";
-import uuid from "uuid";
-import axios from "axios";
-import RecipeContext from "./RecipeContext";
-import RecipeReducer from "./RecipeReducer";
+import React, { useReducer, useEffect } from 'react';
+import uuid from 'uuid';
+import axios from 'axios';
+import RecipeContext from './RecipeContext';
+import RecipeReducer from './RecipeReducer';
 import {
-  GET_PUBLIC_RECIPES,
-  CLEAR_RECIPES,
-  ADD_RECIPE,
-  DELETE_RECIPE,
-  SET_CURRENT,
-  CLEAR_CURRENT,
-  UPDATE_RECIPE,
-  FILTER_RECIPES,
-  CLEAR_FILTER
-} from "../reducerTypes";
+    GET_PUBLIC_RECIPES,
+    CLEAR_RECIPES,
+    ADD_RECIPE,
+    DELETE_RECIPE,
+    SET_CURRENT,
+    CLEAR_CURRENT,
+    UPDATE_RECIPE,
+    FILTER_RECIPES,
+    CLEAR_FILTER
+} from '../reducerTypes';
 
 const RecipeState = props => {
-  const initialState = {
-    recipes: [],
-    loading: true
-  };
+    const initialState = {
+        recipes: [],
+        loading: true
+    };
 
-  const [state, dispatch] = useReducer(RecipeReducer, initialState);
+    const [state, dispatch] = useReducer(RecipeReducer, initialState);
 
-  //Get all recipes
+    //Get all recipes
 
-  const getPublicRecipes = async () => {
-    try {
-      const res = await axios.get("/api/recipes/public")
-      res.data.map(rec => {
-        rec.date = rec.date.slice(0,10).replace(/-/g,'/');
-      })
-      dispatch({
-        type: GET_PUBLIC_RECIPES,
-        payload: res.data
-      })
-      
-    } catch (err) {
-      console.log(err);
-    }
-  }
+    const getPublicRecipes = async () => {
+        try {
+            const res = await axios.get('/api/recipes/public');
+            res.data.map(rec => {
+                rec.date = rec.date.slice(0, 10).replace(/-/g, '/');
+            });
+            dispatch({
+                type: GET_PUBLIC_RECIPES,
+                payload: res.data
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
-  // Add recipe
-  const addRecipe = recipe => {
-    recipe.id = uuid();
-    dispatch({
-      type: ADD_RECIPE,
-      payload: recipe
-    });
-  };
+    // Add recipe
+    const addRecipe = recipe => {
+        recipe.id = uuid();
+        dispatch({
+            type: ADD_RECIPE,
+            payload: recipe
+        });
+    };
 
-  // Update recipe
+    // Update recipe
 
-  // Delete recipe
+    // Delete recipe
 
-  // Set current recipe
+    // Set current recipe
 
-  // Clear current recipe
+    // Clear current recipe
 
-  // Filter recipes
+    // Filter recipes
 
-  // Clear filter
+    // Clear filter
 
-  return (
-    <RecipeContext.Provider
-      value={{
-        recipes: state.recipes,
-        addRecipe,
-        getPublicRecipes,
-        loading: state.loading
-      }}
-    >
-      {props.children}
-    </RecipeContext.Provider>
-  );
+    return (
+        <RecipeContext.Provider
+            value={{
+                recipes: state.recipes,
+                addRecipe,
+                getPublicRecipes,
+                loading: state.loading
+            }}
+        >
+            {props.children}
+        </RecipeContext.Provider>
+    );
 };
 
 export default RecipeState;
