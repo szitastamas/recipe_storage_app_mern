@@ -4,9 +4,8 @@ import RecipeItem from "./RecipeItem";
 import AuthContext from "../../contexts/auth/AuthContext";
 import LoadingDiv from "../utlity/LoadingDiv";
 
-const Recipes = () => {
+const Recipes = (props) => {
   const recipeContext = useContext(RecipeContext);
-  const authContext = useContext(AuthContext);
   const { recipes, getPublicRecipes, loading } = recipeContext;
   // const { isAuthenticated } = authContext;
 
@@ -15,11 +14,16 @@ const Recipes = () => {
     // eslint-disable-next-line
   }, []);
   
-  // const title = isAuth
-  //   ? "You can see all your uploaded recipes here"
-  //   : "Most recently uploaded public recipes";
+  let title = '';
 
-  const title = "Most recently uploaded public recipes";
+  switch(props.location){
+    case 'home':
+      title='The most recently uploaded public recipes'
+    case 'dashboard':
+      title='Check all your own recipes'
+    default:
+      title='Recipes';
+  }
 
   return (
     <Fragment>
@@ -27,7 +31,7 @@ const Recipes = () => {
       {loading ? (
         <LoadingDiv />
       ) : (
-        <div className="home-recipe-grid">
+        <div className={props.customClassName}>
           {recipes.map((recipe, index) => {
             return <RecipeItem key={recipe._id} recipe={recipe} index={index} />;
           })}

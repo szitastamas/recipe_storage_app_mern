@@ -1,12 +1,26 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
+import AuthContext from '../../contexts/auth/AuthContext'
 
 const Navbar = ({ title, icon }) => {
+
+  const authContext = useContext(AuthContext)
+
+  const { user, logout } = authContext;
+
   return (
     <Fragment>
       <nav className="nav-extended transparent">
         <div className="nav-wrapper">
+        {user && 
+        <span className="right teal-text">
+          <Link to="#" onClick={logout} className="left">
+          <i className="material-icons teal-text text-darken-3 small" style={{marginRight: ".7rem"}}>logout</i> 
+          </Link> 
+          Welcome, {user.name}
+        </span>}
+
           <Link to="/" className="brand-logo teal-text flow-text">
             <i className="small material-icons">{icon}</i>
             <span className="flow-text right">{title}</span>

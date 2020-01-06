@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import AuthContext from './AuthContext';
 import AuthReducer from './AuthReducer';
 import axios from 'axios';
+import setAuthToken from '../../components/utlity/SetAuthToken'
 import {
 	REGISTER_SUCCESS,
 	REGISTER_FAIL,
@@ -24,11 +25,60 @@ const AuthState = (props) => {
     
 	const [state, dispatch] = useReducer(AuthReducer, initialState)
 	
-	// Load User
+		// Load User
+		const loadUser = async () => {
+			console.log(localStorage.token)
+			if(localStorage.token){
+				setAuthToken(localStorage.token)
+			}
+	
+			try {
+				const res = await axios.get("/api/auth");
+				console.log(res.data)
+				dispatch({
+					type: USER_LOADED,
+					payload: res.data
+				})
+			} catch (err) {
+				console.log(err.message)
+				dispatch({
+					type: AUTH_ERROR
+				})
+			}
+		}
+
+	// Register user
+
+	const register = async (userData) => {
+		const config = {
+			headers: {
+				"Content-Type": "application/json"
+			}
+		}
+
+		try {
+			const res = await axios.post("/api/users", userData, config)
+			const token = res.data;
+
+			dispatch({
+				type: REGISTER_SUCCESS,
+				payload: token
+			})
+
+			loadUser();
+
+		} catch (err) {
+			dispatch({
+				type: REGISTER_FAIL,
+				payload: err.response.data.msg
+			})
+		}
+	}
+
+
 
 	// Login
 	const login = async (userData) => {
-
 		const config = {
 			headers:{
 				"Content-Type": "application/json"
@@ -38,17 +88,32 @@ const AuthState = (props) => {
 		try {
 			const res = await axios.post("/api/auth/", userData, config)
 			const token = res.data;
+			dispatch({
+				type: LOGIN_SUCCESS,
+				payload: token
+			})
 
+			loadUser();
 		} catch (err) {
-			console.error(err.message)
-			throw new Error(err.message)
+			dispatch({
+				type: LOGIN_FAIL,
+				payload: err.response.data.msg
+			})
+			
 		}
 
 	}
 
 	// Logout
-
+	const logout = () => {
+		return;
+	}
 	// Clear errors in the state
+	const clearErrors = () => {
+		dispatch({
+			type: CLEAR_ERRORS
+		})
+	}
 
 	return (
 		<AuthContext.Provider value={{
@@ -57,7 +122,10 @@ const AuthState = (props) => {
 			user: state.user,
 			loading: state.loading,
 			error: state.error,
-			login
+			register,
+			login,
+			loadUser,
+			clearErrors
 		}}>
 			{props.children}
 		</AuthContext.Provider>

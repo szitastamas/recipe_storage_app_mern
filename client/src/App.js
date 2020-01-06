@@ -12,6 +12,11 @@ import RegisterForm from "./components/forms/RegisterForm";
 import LoginForm from "./components/forms/LoginForm";
 import AlertState from "./contexts/alert/AlertState";
 import { Alerts } from "./components/utlity/Alerts";
+import setAuthToken from './components/utlity/SetAuthToken'
+
+if(localStorage.token){
+  setAuthToken(localStorage.token)
+}
 
 // TODO - It will always be the public recipes of all users from the backend
 // that are displayed on the Home page. In Home's useEffect() I can fetch those.

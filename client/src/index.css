@@ -44,7 +44,8 @@ select {
 	animation: fadeIn 600ms forwards;
 }
 
-.home-recipe-grid{
+.home-recipe-grid,
+.dashboard-recipe-grid{
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-gap: .7rem;
