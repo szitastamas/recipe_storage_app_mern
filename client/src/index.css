@@ -25,6 +25,11 @@ code {
 	animation: fadeIn 400ms forwards;
 }
 
+a:hover{
+	color: teal;
+	transition: 150ms color ease-out;
+}
+
 select {
 	display: block;
 }

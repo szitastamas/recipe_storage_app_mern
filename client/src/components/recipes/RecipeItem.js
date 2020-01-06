@@ -14,14 +14,14 @@ const RecipeItem = ({ recipe, index }) => {
 			  <span className="card-title" style={capitalize}>{recipe.title}</span>
 		  </div>
         <div className="card-content">
-          <p className="badge" style={capitalize}>
+          <p className="teal-text right" style={capitalize}>
             {recipe.type}
           </p>
           <span>Created on {recipe.date}</span>
 		  
         </div>
-        <div className="card-action center grey lighten-4">
-		  <Link to={`#`}>
+        <div className="card-action center grey darken-3">
+		  <Link to={`#`} className="white-text">
 			  Read More
 		  </Link>
         </div>

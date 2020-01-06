@@ -23,6 +23,7 @@ const RegisterForm = () => {
 
     return (
         <div className="container form-container">
+            <h3 className="card-title teal-text flow-text">Create an account</h3>
             <form onSubmit={handleLoginSubmit}>
                 <div className="input-field">
                     <input type="text" name="name" id="name" value={registerData.name} onChange={handleChange}/>
@@ -42,6 +43,7 @@ const RegisterForm = () => {
                 </div>
                 <button type="submit" className="btn">Log in</button>
             </form>
+            <br/>
         </div>
     )
 }

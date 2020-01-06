@@ -12,7 +12,7 @@ const Recipe = require('../models/Recipe');
 router.get('/', auth, async (req, res) => {
 
     try {
-        const recipes = await Recipe.find({ user: req.user.id }).sort({ date: -1 });
+        const recipes = await Recipe.find({ user: req.user.id });
         res.json(recipes)
     } catch (err) {
         console.error(err.message);

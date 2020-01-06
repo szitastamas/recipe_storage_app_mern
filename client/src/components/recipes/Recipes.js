@@ -14,6 +14,7 @@ const Recipes = () => {
     getPublicRecipes();
     // eslint-disable-next-line
   }, []);
+  
   // const title = isAuth
   //   ? "You can see all your uploaded recipes here"
   //   : "Most recently uploaded public recipes";
@@ -22,13 +23,13 @@ const Recipes = () => {
 
   return (
     <Fragment>
-      <h2 className="flow-text">{title}</h2>
+      <h2 className="flow-text card-title teal-text text-lighten-2">{title}</h2>
       {loading ? (
         <LoadingDiv />
       ) : (
         <div className="home-recipe-grid">
           {recipes.map((recipe, index) => {
-            return <RecipeItem key={recipe.id} recipe={recipe} index={index} />;
+            return <RecipeItem key={recipe._id} recipe={recipe} index={index} />;
           })}
         </div>
       )}

@@ -1,8 +1,9 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useContext } from 'react';
 import uuid from 'uuid';
 import axios from 'axios';
 import RecipeContext from './RecipeContext';
 import RecipeReducer from './RecipeReducer';
+import AlertContext from '../alert/AlertContext';
 import {
     GET_PUBLIC_RECIPES,
     CLEAR_RECIPES,
@@ -22,7 +23,7 @@ const RecipeState = props => {
     };
 
     const [state, dispatch] = useReducer(RecipeReducer, initialState);
-
+    const alertContext = useContext(AlertContext);
     //Get all recipes
 
     const getPublicRecipes = async () => {
@@ -36,7 +37,7 @@ const RecipeState = props => {
                 payload: res.data
             });
         } catch (err) {
-            console.log(err);
+            alertContext.setAlert("Could not connect to server", "fail", 50000)
         }
     };
 
