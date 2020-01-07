@@ -9,7 +9,22 @@ const Recipe = require('../models/Recipe');
 // @route   GET api/recipes
 // @desc    Get all user's recipes
 // @access  Private
-router.get('/', auth, async (req, res) => {
+// router.get('/', auth, async (req, res) => {
+
+//     try {
+//         const recipes = await Recipe.find({ user: req.user.id });
+//         res.json(recipes)
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).send("Server Error")
+//     }
+
+// })
+
+// @route   GET api/user/:id
+// @desc    Get one user's own recipes
+// @access  Private
+router.get('/user/:id', auth, async (req, res) => {
 
     try {
         const recipes = await Recipe.find({ user: req.user.id });
@@ -22,8 +37,8 @@ router.get('/', auth, async (req, res) => {
 })
 
 // @route   GET api/recipes/:id
-// @desc    Get one specific recipe
-// @access  Private
+// @desc    Get all public recipes
+// @access  Public
 router.get('/public', async (req, res)=>{
     
     try {

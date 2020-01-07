@@ -94,3 +94,5 @@ export const AddRecipeForm = () => {
 		</Fragment>
 	);
 };
+
+export default AddRecipeForm;

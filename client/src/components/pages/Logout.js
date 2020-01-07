@@ -1,12 +1,17 @@
-import React,  { useState } from 'react'
-import AuthContext from '../../contexts/auth/AuthContext';
+import React,  { useState, useContext, useEffect } from 'react'
+import AlertContext from '../../contexts/alert/AlertContext';
 
 export const Logout = (props) => {
 
-    const [countdown, setCountdown] = useState(5)
+    useEffect(() => {
+        alertContext.setAlert("Logged out successfully", "success", 5000);
+        // eslint-disable-next-line
+    }, []);
+
+    const countdown = 5;
+    const alertContext = useContext(AlertContext)
 
     const redirecting = () => {
-
         setTimeout(() => {
             props.history.push("/");
         }, countdown*1000)

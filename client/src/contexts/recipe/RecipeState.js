@@ -1,11 +1,12 @@
 import React, { useReducer, useContext } from 'react';
-import uuid from 'uuid';
 import axios from 'axios';
 import RecipeContext from './RecipeContext';
 import RecipeReducer from './RecipeReducer';
 import AlertContext from '../alert/AlertContext';
+import AuthContext from '../auth/AuthContext';
 import {
     GET_PUBLIC_RECIPES,
+    GET_OWN_RECIPES,
     CLEAR_RECIPES,
     ADD_RECIPE,
     DELETE_RECIPE,
@@ -24,35 +25,79 @@ const RecipeState = props => {
 
     const [state, dispatch] = useReducer(RecipeReducer, initialState);
     const alertContext = useContext(AlertContext);
+    const { setAlert } = alertContext;
+    const authContext = useContext(AuthContext)
+    const { user } = authContext;
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
     //Get all recipes
 
     const getPublicRecipes = async () => {
         try {
             const res = await axios.get('/api/recipes/public');
-            res.data.map(rec => {
-                rec.date = rec.date.slice(0, 10).replace(/-/g, '/');
-            });
             dispatch({
                 type: GET_PUBLIC_RECIPES,
                 payload: res.data
             });
         } catch (err) {
-            alertContext.setAlert('Server connection failed', 'fail', 5000);
+            setAlert('Server connection failed', 'fail', 4000);
         }
     };
 
+    const getOwnRecipes = async (userId) => {
+        try {
+            const res = await axios.get(`/api/recipes/user/${userId}`)
+
+            dispatch({
+                type: GET_OWN_RECIPES,
+                payload: res.data
+            })
+        } catch (err) {
+            console.log(err);
+            setAlert('Server connection failed', 'fail', 4000);
+        }
+    }
+
     // Add recipe
-    const addRecipe = recipe => {
-        recipe.id = uuid();
-        dispatch({
-            type: ADD_RECIPE,
-            payload: recipe
-        });
+    const addRecipe = async recipe => {
+        try {
+
+            const res = await axios.post("/api/recipes", recipe,config)
+
+            dispatch({
+                type: ADD_RECIPE,
+                payload: res.data
+            });
+            setAlert("Recipe successfully uploaded", "success")
+        } catch (err) {
+            console.error(err.message)
+            setAlert("Upload process failed. Please try again!", "fail")
+        }
     };
 
     // Update recipe
 
     // Delete recipe
+
+    const deleteRecipe = async id => {
+        try {
+            const res = await axios.delete(`/api/recipes/${id}`)
+
+            dispatch({
+                type: DELETE_RECIPE,
+                payload: id
+            })
+            setAlert(res.data.msg, "success")
+        } catch (err) {
+            console.error(err.message)
+            setAlert("Delete process failed. Please try again!", "fail")
+        }
+    }
 
     // Set current recipe
 
@@ -66,9 +111,11 @@ const RecipeState = props => {
         <RecipeContext.Provider
             value={{
                 recipes: state.recipes,
+                loading: state.loading,
                 addRecipe,
                 getPublicRecipes,
-                loading: state.loading
+                getOwnRecipes,
+                deleteRecipe
             }}
         >
             {props.children}
