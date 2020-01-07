@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import BouncerLoading from './loading/BouncerLoading';
+import SpinnerLoading from './loading/SpinnerLoading';
+import PulserLoading from './loading/PulserLoading';
 
-const LoadingDiv = () => {
-    return (
-        <div id='loading-div'>
-            <div className='loading-container'>
-                <div className='loading-dot'></div>
-            </div>
-        </div>
-    );
+const LoadingDiv = ({ loaderType }) => {
+    const getLoaderType = () => {
+        switch (loaderType) {
+            case 'bouncer':
+                return <BouncerLoading />;
+            case 'spinner':
+                return <SpinnerLoading />;
+            case 'pulser':
+                return <PulserLoading />;
+            default:
+                return <BouncerLoading />;
+        }
+    };
+
+    return getLoaderType();
 };
 
 export default LoadingDiv;

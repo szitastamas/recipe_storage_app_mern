@@ -37,7 +37,7 @@ const RecipeState = props => {
                 payload: res.data
             });
         } catch (err) {
-            alertContext.setAlert("Could not connect to server", "fail", 5000)
+            alertContext.setAlert('Server connection failed', 'fail', 5000);
         }
     };
 
