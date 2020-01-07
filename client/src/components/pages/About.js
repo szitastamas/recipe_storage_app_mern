@@ -50,19 +50,24 @@ const About = () => {
                         <li className='collection-item avatar'>
                             <i className='material-icons circle green lighten-2'>brush</i>
                             <span className='title  green-text'>Design</span>
-                            <p style={{ marginTop: '.6rem' }}>The smooth general design of the page has been created with Materialize CSS.</p>
-                            <p>
-                                I added custom animations as well. The loader components and fading elements got their styles from old little me... :)
-                            </p>
+                            <p style={{ marginTop: '.6rem' }}>The smooth general design of the application has been created with Materialize CSS.</p>
+                            <p>I added custom animations as well. The loader components and fading elements got their styles from little old me ;)</p>
                         </li>
                     </ul>
+                </div>
+                <div className='card-action'>
+                    <span className='red-text text-darken-3'>
+                        This application is based on Brad Traversy's Contact Keeper application from his "React Front To Back" course on Udemy. At the
+                        time of creating this application I was NOT able to create the entire Backend on my own using Express. I extended that
+                        application's functionality and changed its general structure on the Frontend to fit my own ideas for this application.
+                    </span>
                 </div>
             </div>
             <h4 className='teal-text'>About me</h4>
             <p>
                 I am Tamas Szitas. At the time of creating this app I was attending the IT-Academy Dr Heuer in Bochum, Germany (January 2020). I am
                 aiming to become a professional Web-Developer, especially a MERN-Stack developer. I started learning React in December 2019 and I find
-                React an incredibly exciting and awesome library to use and to learn.{' '}
+                React an incredibly exciting and awesome library to use and to learn.
             </p>
             <div className='collection with-header'>
                 <h5 className='collection-header'>Contact Details</h5>
