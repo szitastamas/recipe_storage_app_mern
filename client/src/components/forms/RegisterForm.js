@@ -8,10 +8,11 @@ const RegisterForm = (props) => {
     const { setAlert } = alertContext;
 
     const authContext = useContext(AuthContext);
-    const { register, clearErrors, error, isAuthenticated } = authContext;
+    const { register, clearErrors, error, isAuthenticated, loadUser } = authContext;
 
     useEffect( () => {
 
+        loadUser();
         if(isAuthenticated){
             props.history.push("/")
         }

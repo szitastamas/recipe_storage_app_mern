@@ -6,12 +6,18 @@ import {
 	AUTH_ERROR,
 	USER_LOADED,
 	LOGOUT,
-	CLEAR_ERRORS
+	CLEAR_ERRORS,
+	LOADING_USER
 
 } from '../reducerTypes';
 
 export default (state, action) => {
     switch(action.type){
+		case LOADING_USER:
+			return{
+				...state,
+				loading: true
+			}
 		case USER_LOADED:
 			return{
 				...state,
@@ -30,17 +36,17 @@ export default (state, action) => {
 		case AUTH_ERROR:
 		case LOGIN_FAIL:
 		case REGISTER_FAIL:
+		case LOGOUT:
 			localStorage.removeItem("token")
 			return{
 				...state,
-				token: null,
-				loading: true,
-				isAuthenticated: false,
 				user: null,
+				token: null,
+				loading: false,
+				isAuthenticated: false,
 				error: action.payload
 			};
 		case LOGIN_SUCCESS:
-			console.log(action.payload)
 			localStorage.setItem("token", action.payload.token);
 			return {
 				...state,

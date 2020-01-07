@@ -43,6 +43,10 @@ const LoginForm = (props) => {
             setAlert("Please fill in all fields", "fail")
         }else{
             login({ email, password })
+            setLoginData({
+                email: '',
+                password: ''
+            })
         }
 
     }

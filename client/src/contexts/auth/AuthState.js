@@ -4,6 +4,7 @@ import AuthReducer from './AuthReducer';
 import axios from 'axios';
 import setAuthToken from '../../components/utlity/SetAuthToken'
 import {
+	LOADING_USER,
 	REGISTER_SUCCESS,
 	REGISTER_FAIL,
 	LOGIN_SUCCESS,
@@ -27,14 +28,16 @@ const AuthState = (props) => {
 	
 		// Load User
 		const loadUser = async () => {
-			console.log(localStorage.token)
 			if(localStorage.token){
 				setAuthToken(localStorage.token)
 			}
+
+			dispatch({
+				type: LOADING_USER
+			})
 	
 			try {
 				const res = await axios.get("/api/auth");
-				console.log(res.data)
 				dispatch({
 					type: USER_LOADED,
 					payload: res.data
@@ -106,7 +109,10 @@ const AuthState = (props) => {
 
 	// Logout
 	const logout = () => {
-		return;
+		setAuthToken();
+		dispatch({
+			type: LOGOUT
+		})
 	}
 	// Clear errors in the state
 	const clearErrors = () => {
@@ -124,6 +130,7 @@ const AuthState = (props) => {
 			error: state.error,
 			register,
 			login,
+			logout,
 			loadUser,
 			clearErrors
 		}}>
