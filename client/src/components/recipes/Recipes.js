@@ -4,7 +4,7 @@ import RecipeItem from './RecipeItem';
 import AuthContext from '../../contexts/auth/AuthContext';
 import LoadingDiv from '../utlity/LoadingDiv';
 
-const Recipes = props => {
+const Recipes = ({ location, customClassName }) => {
     const recipeContext = useContext(RecipeContext);
     const { recipes, getPublicRecipes, loading } = recipeContext;
     // const { isAuthenticated } = authContext;
@@ -15,7 +15,7 @@ const Recipes = props => {
     }, []);
 
     const setTitle = () => {
-        switch (props.location) {
+        switch (location) {
             case 'home':
                 return 'The most recently uploaded public recipes';
             case 'dashboard':
@@ -30,9 +30,9 @@ const Recipes = props => {
         <Fragment>
             <h2 className='flow-text card-title teal-text text-lighten-2'>{title}</h2>
             {loading ? (
-                <LoadingDiv loaderType='spinner' />
+                <LoadingDiv loaderType='pulser' />
             ) : (
-                <div className={props.customClassName}>
+                <div className={customClassName}>
                     {recipes.map((recipe, index) => {
                         return <RecipeItem key={recipe._id} recipe={recipe} index={index} />;
                     })}
