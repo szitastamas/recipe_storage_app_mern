@@ -58,11 +58,6 @@ const Navbar = ({ title, icon }) => {
                                 About
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink className='teal-text link-tag' to='/contact'>
-                                Contact
-                            </NavLink>
-                        </li>
                     </ul>
                 </div>
             </nav>
@@ -91,11 +86,6 @@ const Navbar = ({ title, icon }) => {
                 <li>
                     <NavLink className='teal-text' to='/about'>
                         About
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink className='teal-text' to='/contact'>
-                        Contact
                     </NavLink>
                 </li>
             </ul>
