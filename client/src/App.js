@@ -13,7 +13,7 @@ import AlertState from './contexts/alert/AlertState';
 import { Alerts } from './components/utlity/Alerts';
 import setAuthToken from './components/utlity/SetAuthToken';
 import { Logout } from './components/pages/Logout';
-import { PrivateRoute } from './components/utlity/PrivateRoute'
+import { PrivateRoute } from './components/utlity/PrivateRoute';
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -21,8 +21,8 @@ if (localStorage.token) {
 
 const App = () => {
     return (
-        <AuthState>
-            <AlertState>
+        <AlertState>
+            <AuthState>
                 <RecipeState>
                     <BrowserRouter>
                         <Fragment>
@@ -35,14 +35,14 @@ const App = () => {
                                     <Route exact path='/register' component={RegisterForm} />
                                     <PrivateRoute exact path='/dashboard' component={Dashboard} />
                                     <Route exact path='/about' component={About} />
-                                    <Route exact path="/logout" component={Logout} />
+                                    <Route exact path='/logout' component={Logout} />
                                 </Switch>
                             </div>
                         </Fragment>
                     </BrowserRouter>
                 </RecipeState>
-            </AlertState>
-        </AuthState>
+            </AuthState>
+        </AlertState>
     );
 };
 
