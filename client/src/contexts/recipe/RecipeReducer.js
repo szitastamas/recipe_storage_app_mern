@@ -14,7 +14,6 @@ import {
 export default (state, action) => {
 	switch (action.type) {
 		case ADD_RECIPE:
-			console.log(action.payload)
 			return {
 				...state,
 				recipes: [action.payload, ...state.recipes]

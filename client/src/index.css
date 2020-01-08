@@ -21,13 +21,45 @@ code {
 
 .recipe-card {
     opacity: 0;
-    transform: translateX(25px);
+    transform: translateX(-25px);
     animation: fadeIn 400ms forwards;
+}
+
+.card-btn-delete{
+    position: absolute;
+    right: 0%;
+    bottom: 0;
+    height: 100%;
+    box-shadow: none;
+    margin: 0;
+    background: rgb(172, 0, 0);
+}
+
+.card-btn-read-more:hover{
+    color: goldenrod;
+}
+
+.card-btn-delete:hover{
+    box-shadow: none;
+    transform: none;
+    background: red;
 }
 
 a:hover {
     color: teal;
     transition: 150ms color ease-out;
+}
+
+.custom-alert{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 12;
+}
+
+.submit-btn{
+    width: 100%;
+    text-align: center;
 }
 
 select {
@@ -52,7 +84,7 @@ select {
 .home-recipe-grid,
 .dashboard-recipe-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 0.7rem;
 }
 

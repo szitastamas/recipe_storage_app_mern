@@ -11,7 +11,7 @@ export const Alerts = () => {
                     const alertColor = alert.type == 'success' ? 'green white-text' : 'red darken-2 white-text';
 
                     return (
-                        <div key={alert.id} className={`card-panel ${alertColor} center alert-msg`}>
+                        <div key={alert.id} className={`card-panel custom-alert ${alertColor} center alert-msg`}>
                             <i className='material-icons left'>warning</i>
                             {alert.msg}
                         </div>

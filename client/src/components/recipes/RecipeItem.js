@@ -33,19 +33,18 @@ const RecipeItem = ({ recipe, index }) => {
           </p>
           <span>Created on {recipe.date.slice(0, 10).replace(/-/g, "/")}</span>
         </div>
-        <div className="card-action center grey darken-3">
-          <Link to={`#`} className="white-text">
+        <div className="card-action grey darken-3">
+          <Link to={`#`} className="card-btn-read-more white-text">
             Read More
           </Link>
-          {user._id === recipe.user && (
-            <Link
-              to="#"
-              className="btn-floating small red-text"
+          {(user && user._id === recipe.user) && (
+            <button
+              className="btn card-btn-delete small"
               onClick={handleDelete}
               style={{ marginLeft: "4rem" }}
             >
-              <i className="material-icons right red">delete</i>
-            </Link>
+              Delete
+            </button>
           )}
         </div>
       </div>

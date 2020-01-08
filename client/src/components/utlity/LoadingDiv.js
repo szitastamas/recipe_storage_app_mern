@@ -17,7 +17,7 @@ const LoadingDiv = ({ loaderType }) => {
         }
     };
 
-    return getLoaderType();
+    return (getLoaderType());
 };
 
 export default LoadingDiv;

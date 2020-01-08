@@ -156,7 +156,7 @@ router.delete('/:id', auth, async (req, res) => {
         // Finding the recipe via the ID that arrived from the request parameters
         // Setting the recipe in the Recipe Collection to the recipeFields object -->
         // overwriting the existing object with the new one
-        Recipe.findByIdAndRemove(req.params.id);
+        await Recipe.findByIdAndRemove(req.params.id);
 
         // Returning the recipe to the user
         res.json({ msg: "Recipe successfully removed." })

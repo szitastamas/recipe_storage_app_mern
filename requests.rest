@@ -1,0 +1,5 @@
+GET http://localhost:5000/api/recipes/public
+
+###
+
+DELETE http://localhost:5000/api/recipes/5e10eca57c3c3b26c874b820
