@@ -4,28 +4,31 @@ import AuthContext from '../../contexts/auth/AuthContext';
 import RecipeContext from '../../contexts/recipe/RecipeContext';
 import LoadingDiv from '../utlity/LoadingDiv';
 
-
 // import AlertContext from '../../contexts/alert/AlertContext';
 const Home = () => {
-    const authContext = useContext(AuthContext);
-    const { loadUser } = authContext;
+	const authContext = useContext(AuthContext);
+	const { loadUser } = authContext;
 
-    const recipeContext = useContext(RecipeContext)
-    const { getPublicRecipes, recipes, loading } = recipeContext;
+	const recipeContext = useContext(RecipeContext);
+	const { getPublicRecipes, recipes, loading } = recipeContext;
 
-    useEffect(() => {
-        loadUser();
-        getPublicRecipes(); 
-        // eslint-disable-next-line
-    }, []);
+	useEffect(() => {
+		loadUser();
+		getPublicRecipes();
+		// eslint-disable-next-line
+	}, []);
 
-    return (
-        <div>
-            <div className='col s12 l6'>
-                {recipes.length === 0 ? <LoadingDiv loaderType='bouncer' /> : <Recipes customGrid='home-recipe-grid' location='home' />}
-            </div>
-        </div>
-    );
+	return (
+		<div>
+			<div className='col s12 l6'>
+				{loading ? (
+					<LoadingDiv loaderType='pulser' />
+				) : (
+					<Recipes customGrid='home-recipe-grid' location='home' />
+				)}
+			</div>
+		</div>
+	);
 };
 
 export default Home;

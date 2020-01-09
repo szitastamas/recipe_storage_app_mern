@@ -8,7 +8,6 @@ import {
 	CLEAR_FILTER,
 	GET_PUBLIC_RECIPES,
 	GET_OWN_RECIPES
-
 } from '../reducerTypes';
 
 export default (state, action) => {
@@ -20,7 +19,7 @@ export default (state, action) => {
 			};
 		case GET_PUBLIC_RECIPES:
 		case GET_OWN_RECIPES:
-			return{
+			return {
 				...state,
 				recipes: action.payload,
 				loading: false
@@ -28,8 +27,8 @@ export default (state, action) => {
 		case DELETE_RECIPE:
 			return {
 				...state,
-				recipes: state.recipes.filter(recipe => recipe._id != action.payload)
-			}
+				recipes: state.recipes.filter((recipe) => recipe._id != action.payload)
+			};
 		default:
 			return state;
 	}
