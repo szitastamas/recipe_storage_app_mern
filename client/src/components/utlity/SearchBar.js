@@ -6,11 +6,12 @@ export const SearchBar = () => {
 
     const recipeContext = useContext(RecipeContext);
 
-    const { setFilter } = recipeContext;
+    const { setRecipeFilter } = recipeContext;
 
     const [filter, setFilter] = useState('');
     const handleChange = (e) => {
-		setFilter(e.target.value);
+        setFilter(e.target.value);
+        setRecipeFilter(e.target.value)
 	};
 
     return (
@@ -20,9 +21,9 @@ export const SearchBar = () => {
                 <input type='text' name='filter' id='filter' value={filter} onChange={handleChange} />
                 <label htmlFor='filter'>Type in keywords to filter recipes</label>
             </div>
-            <button className='btn blue lighten-2'>Search</button>
-            <button className='btn teal right'>Clear</button>
         </div>
     </div>
     )
 }
+
+export default SearchBar;

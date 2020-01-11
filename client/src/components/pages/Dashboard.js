@@ -6,19 +6,19 @@ import AddRecipeForm from '../forms/AddRecipeForm';
 import DashboardInfo from './dashboard/DashboardInfo';
 import LoadingDiv from '../utlity/LoadingDiv';
 // import AlertContext from "../../contexts/alert/AlertContext";
-const Dashboard = (props) => {
+const Dashboard = () => {
 	const authContext = useContext(AuthContext);
 	const { isAuthenticated, loadUser } = authContext;
 
 	const recipeContext = useContext(RecipeContext);
-	const { recipes, getOwnRecipes, loading } = recipeContext;
+	const { getOwnRecipes, ownRecipes, loading } = recipeContext;
 
 	useEffect(() => {
 		loadUser();
 		getOwnRecipes();
 
 		// eslint-disable-next-line
-	}, [isAuthenticated, recipes, loading]);
+	}, [isAuthenticated, loading]);
 
 	return (
 		<div className='col s12 l6'>
@@ -35,8 +35,8 @@ const Dashboard = (props) => {
 			</div>
 			{loading ? (
 				<LoadingDiv />
-			) : recipes.length > 0 ? (
-				<Recipes customGrid='dashboard-recipe-grid' title="Check all your own recipes" />
+			) : ownRecipes.length > 0 ? (
+				<Recipes customGrid='dashboard-recipe-grid' title="Check all your own recipes" recipes={ownRecipes}/>
 			) : (
 				<p className='center' style={{ padding: '2rem' }}>
 					Your Recipe Storage is empty. Upload some of your favourite recipes today!

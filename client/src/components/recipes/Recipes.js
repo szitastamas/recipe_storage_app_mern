@@ -1,12 +1,11 @@
-import React, { useContext, Fragment, useState } from "react";
+import React, { useContext, Fragment } from "react";
 import RecipeContext from "../../contexts/recipe/RecipeContext";
 import RecipeItem from "./RecipeItem";
 import LoadingDiv from "../utlity/LoadingDiv";
 
-const Recipes = ({ customGrid, title }) => {
+const Recipes = ({ customGrid, title, recipes }) => {
   const recipeContext = useContext(RecipeContext);
-  const { recipes, loading } = recipeContext;
-
+  const { loading } = recipeContext;
   return (
     <Fragment>
       <div className="col s12 m8 text-right">

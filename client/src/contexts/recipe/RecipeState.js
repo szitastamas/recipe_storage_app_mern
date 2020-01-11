@@ -14,13 +14,15 @@ import {
 	CLEAR_CURRENT,
 	UPDATE_RECIPE,
 	FILTER_RECIPES,
-	CLEAR_FILTER
+	CLEAR_RECIPE_FILTER,
+	SET_RECIPE_FILTER
 } from '../reducerTypes';
 
 const RecipeState = (props) => {
 	const initialState = {
-		recipes: [],
-		filteredRecipes: null,
+		publicRecipes: [],
+		ownRecipes: [],
+		filteredRecipes: [],
 		loading: true
 	};
 
@@ -100,23 +102,38 @@ const RecipeState = (props) => {
 	};
 
 	// Set current recipe
-
+	
 	// Clear current recipe
-
+	
 	// Filter recipes
+		const setRecipeFilter = (filter) => {
+
+			dispatch({
+				type: SET_RECIPE_FILTER,
+				payload: filter
+			})
+		}
 
 	// Clear filter
+	const clearRecipeFilter = () => {
+		dispatch({
+			type: CLEAR_RECIPE_FILTER
+		})
+	}
 
 	return (
 		<RecipeContext.Provider
 			value={{
-				recipes: state.recipes,
+				publicRecipes: state.publicRecipes,
+				ownRecipes: state.ownRecipes,
 				loading: state.loading,
 				filteredRecipes: state.filteredRecipes,
 				addRecipe,
 				getPublicRecipes,
 				getOwnRecipes,
-				deleteRecipe
+				deleteRecipe,
+				setRecipeFilter,
+				clearRecipeFilter
 			}}
 		>
 			{props.children}
