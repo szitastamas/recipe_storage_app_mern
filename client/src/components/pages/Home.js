@@ -24,7 +24,7 @@ const Home = () => {
 				{loading ? (
 					<LoadingDiv loaderType='pulser' />
 				) : (
-					<Recipes customGrid='home-recipe-grid' location='home' />
+					<Recipes customGrid='home-recipe-grid' title="The most recently uploaded public recipes" />
 				)}
 			</div>
 		</div>

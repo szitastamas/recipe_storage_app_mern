@@ -36,7 +36,7 @@ const Dashboard = (props) => {
 			{loading ? (
 				<LoadingDiv />
 			) : recipes.length > 0 ? (
-				<Recipes customGrid='dashboard-recipe-grid' location='dashboard' />
+				<Recipes customGrid='dashboard-recipe-grid' title="Check all your own recipes" />
 			) : (
 				<p className='center' style={{ padding: '2rem' }}>
 					Your Recipe Storage is empty. Upload some of your favourite recipes today!

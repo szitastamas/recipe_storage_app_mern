@@ -36,13 +36,6 @@ const RecipeState = (props) => {
 		}
 	};
 
-	// Clear recipes
-	const clearRecipes = () => {
-		dispatch({
-			type: CLEAR_RECIPES
-		});
-	};
-
 	//Get all recipes
 
 	const getPublicRecipes = async () => {
