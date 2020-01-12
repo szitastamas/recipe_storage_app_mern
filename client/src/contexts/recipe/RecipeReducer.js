@@ -23,6 +23,13 @@ export default (state, action) => {
 				...state,
 				ownRecipes: [action.payload, ...state.ownRecipes]
 			};
+		case UPDATE_RECIPE:
+			const editedRecipe = action.payload;
+			return {
+				...state,
+				ownRecipes: state.ownRecipes.map(recipe => recipe._id === editedRecipe._id ? editedRecipe : recipe),
+				loading: false
+			}
 		case CLEAR_RECIPE_FILTER:
 		case GET_PUBLIC_RECIPES:
 			return {

@@ -81,17 +81,13 @@ select {
 	animation: fadeIn 600ms forwards;
 }
 
-.home-recipe-grid {
+/* .home-recipe-grid {
+	max-width: 75%;
+	margin: 1rem auto;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	grid-gap: 0.7rem;
-}
-
-.dashboard-recipe-grid {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 0.7rem;
-}
+} */
 
 /* SpinnerLoading */
 

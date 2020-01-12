@@ -85,6 +85,23 @@ const RecipeState = (props) => {
 	};
 
 	// Update recipe
+	const updateRecipe = async recipe => {
+		console.log("Updating recipe...")
+
+		try {
+			const res = await axios.put(`/api/recipes/${recipe._id}`, recipe, config)
+
+			dispatch({
+				type: UPDATE_RECIPE,
+				payload: res.data
+			})
+
+			setAlert("Recipe successfully updated.", "success", 2500)
+		} catch (err) {
+			console.log(err.message)
+			setAlert("Updating process failed. Try again!")
+		}
+	}
 
 	// Delete recipe
 
@@ -102,10 +119,6 @@ const RecipeState = (props) => {
 			setAlert('Delete process failed. Please try again!', 'fail');
 		}
 	};
-
-	// Set current recipe
-
-	// Clear current recipe
 
 	// Filter recipes
 	const setRecipeFilter = (filter) => {
@@ -140,6 +153,7 @@ const RecipeState = (props) => {
 				getPublicRecipes,
 				getOwnRecipes,
 				deleteRecipe,
+				updateRecipe,
 				setRecipeFilter,
 				clearRecipeFilter,
 				triggerLoading
