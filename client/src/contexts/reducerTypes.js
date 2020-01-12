@@ -19,6 +19,4 @@ export const USER_LOADED = 'USER_LOADED';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const AUTH_ERROR = 'AUTH_ERROR';
-
-
-
+export const TRIGGER_LOADING = 'TRIGGER_LOADING';

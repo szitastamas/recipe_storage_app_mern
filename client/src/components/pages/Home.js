@@ -1,26 +1,25 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Recipes from '../recipes/Recipes';
 import AuthContext from '../../contexts/auth/AuthContext';
 import RecipeContext from '../../contexts/recipe/RecipeContext';
 import LoadingDiv from '../utlity/LoadingDiv';
-import SearchBar from '../utlity/SearchBar'
+import SearchBar from '../utlity/SearchBar';
 
 // import AlertContext from '../../contexts/alert/AlertContext';
 const Home = () => {
 	const authContext = useContext(AuthContext);
-	const { loadUser } = authContext;
+	const { loadUser, isAuthenticated } = authContext;
 
 	const recipeContext = useContext(RecipeContext);
-	const { getPublicRecipes, publicRecipes, filteredRecipes, loading } = recipeContext;
-
-	const [filtered, setFiltered] = useState([]);
+	const { getPublicRecipes, publicRecipes, filteredRecipes, loading, triggerLoading } = recipeContext;
 
 	useEffect(() => {
+		triggerLoading();
 		loadUser();
 		getPublicRecipes();
 
 		// eslint-disable-next-line
-	}, [loading, publicRecipes]);
+	}, [isAuthenticated]);
 
 	const activeRecipes = filteredRecipes.length === 0 ? publicRecipes : filteredRecipes;
 
@@ -29,9 +28,13 @@ const Home = () => {
 			<div className='col s12 l6'>
 				<SearchBar />
 				{loading ? (
-					<LoadingDiv loaderType='pulser' />
+					<LoadingDiv loaderType='spinner' />
 				) : (
-					<Recipes customGrid='home-recipe-grid' title="The most recently uploaded public recipes" recipes={activeRecipes}/>
+					<Recipes
+						customGrid='home-recipe-grid'
+						title='The most recently uploaded public recipes'
+						recipes={activeRecipes}
+					/>
 				)}
 			</div>
 		</div>

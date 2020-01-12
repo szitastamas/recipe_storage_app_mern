@@ -11,14 +11,15 @@ const Dashboard = () => {
 	const { isAuthenticated, loadUser } = authContext;
 
 	const recipeContext = useContext(RecipeContext);
-	const { getOwnRecipes, ownRecipes, loading } = recipeContext;
+	const { getOwnRecipes, ownRecipes, loading, triggerLoading } = recipeContext;
 
 	useEffect(() => {
+		triggerLoading();
 		loadUser();
 		getOwnRecipes();
 
 		// eslint-disable-next-line
-	}, [isAuthenticated, loading]);
+	}, [isAuthenticated]);
 
 	return (
 		<div className='col s12 l6'>
@@ -34,9 +35,9 @@ const Dashboard = () => {
 				</div>
 			</div>
 			{loading ? (
-				<LoadingDiv />
+				<LoadingDiv loaderType='spinner' />
 			) : ownRecipes.length > 0 ? (
-				<Recipes customGrid='dashboard-recipe-grid' title="Check all your own recipes" recipes={ownRecipes}/>
+				<Recipes customGrid='dashboard-recipe-grid' title='Check all your own recipes' recipes={ownRecipes} />
 			) : (
 				<p className='center' style={{ padding: '2rem' }}>
 					Your Recipe Storage is empty. Upload some of your favourite recipes today!

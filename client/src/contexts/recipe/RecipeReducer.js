@@ -7,11 +7,17 @@ import {
 	SET_RECIPE_FILTER,
 	CLEAR_RECIPE_FILTER,
 	GET_PUBLIC_RECIPES,
-	GET_OWN_RECIPES
+	GET_OWN_RECIPES,
+	TRIGGER_LOADING
 } from '../reducerTypes';
 
 export default (state, action) => {
 	switch (action.type) {
+		case TRIGGER_LOADING:
+			return {
+				...state,
+				loading: true
+			};
 		case ADD_RECIPE:
 			return {
 				...state,
@@ -41,14 +47,17 @@ export default (state, action) => {
 				loading: false
 			};
 		case SET_RECIPE_FILTER:
-			console.log(action.payload)
-			return{
+			return {
 				...state,
-				filteredRecipes: state.publicRecipes.filter(recipe => {
-					return recipe.title.toLowerCase().includes(action.payload.toLowerCase()) || recipe.description.toLowerCase().includes(action.payload.toLowerCase())	|| recipe.type.toLowerCase().includes(action.payload.toLowerCase())
+				filterText: action.payload,
+				filteredRecipes: state.publicRecipes.filter((recipe) => {
+					return (
+						recipe.title.toLowerCase().includes(state.filterText.toLowerCase()) ||
+						recipe.description.toLowerCase().includes(state.filterText.toLowerCase()) ||
+						recipe.type.toLowerCase().includes(state.filterText.toLowerCase())
+					);
 				})
-				// filteredRecipes: state.publicRecipes.filter(recipe => recipe.title.includes(action.payload))
-			}
+			};
 		default:
 			return state;
 	}
