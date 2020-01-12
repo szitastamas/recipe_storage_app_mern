@@ -21,16 +21,13 @@ const RecipeDetails = ({ recipe, removeDetails }) => {
 		<div id='recipe-detail-modal'>
 			<div className='overlay'>
 				<div className='card horizontal' id='recipe-details-card'>
-					<div className='card-image'>
-						<img src='./img/egg.jpg' />
-					</div>
 					<div className='card-stacked'>
 						<div className='card-content'>
 							<h4 className='teal-text'>{title}</h4>
 							<hr />
 							<p style={{ padding: '2rem 0' }}>{description}</p>
 						</div>
-						<div className='card-action hide-on-small-only'>
+						<div className='card-action'>
 							<div className='row'>
 								<div className='col s4'>
 									<strong>Type of dish: </strong>

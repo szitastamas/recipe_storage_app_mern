@@ -226,6 +226,9 @@ select {
 
 #recipe-detail-modal .overlay #recipe-details-card {
 	opacity: 0;
+	max-height: 95%;
+	max-width: 95%;
+	min-width: 55%;
 	cursor: default;
 	transform: scale(0.8);
 	animation: fadeIn 300ms forwards;
