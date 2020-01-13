@@ -243,7 +243,16 @@ i:hover {
 #theme-toggle-container {
     position: absolute;
     top: 15%;
-    right: 5%;
+    right: 2%;
+}
+
+.page-wrapper-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -11;
 }
 
 @keyframes fadeIn {

@@ -7,13 +7,13 @@ export const ThemeState = props => {
     const initialState = {
         isDarkThemeActive: false,
         lightTheme: {
-            uiColor: 'grey lighten-3',
-            bgColor: 'grey lighten-4',
+            uiColor: 'white',
+            bgColor: 'white',
             mainTextColor: 'teal-text',
             secondaryTextColor: 'grey-text text-darken-2'
         },
         darkTheme: {
-            uiColor: 'grey darken-1',
+            uiColor: 'grey darken-4',
             bgColor: 'grey darken-3',
             mainTextColor: 'teal-text',
             secondaryTextColor: 'grey-text text-lighten-2'

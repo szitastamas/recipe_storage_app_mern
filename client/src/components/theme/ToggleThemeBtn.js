@@ -5,7 +5,7 @@ import { LoadTheme } from './LoadTheme';
 export const ToggleThemeBtn = () => {
     const themeContext = useContext(ThemeContext);
 
-    const { toggleDarkTheme } = themeContext;
+    const { toggleDarkTheme, isDarkThemeActive } = themeContext;
 
     const activeTheme = LoadTheme();
 
@@ -18,7 +18,7 @@ export const ToggleThemeBtn = () => {
     return (
         <div id='theme-toggle-container'>
             <button className={`btn small ${bgColor} ${secondaryTextColor}`} onClick={toggleTheme}>
-                Toggle Theme
+                <i className='material-icons'>{isDarkThemeActive ? 'wb_incandescent' : 'brightness_3'}</i>
             </button>
         </div>
     );
