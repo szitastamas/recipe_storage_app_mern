@@ -47,7 +47,7 @@ const About = () => {
             <br />
             <div className={`card ${uiColor} ${secondaryTextColor}`}>
                 <div className={`card-header ${uiColor} ${mainTextColor}`}>
-                    <h5 className='card-title teal-text' style={{ padding: '2rem 1rem 0 1rem' }}>
+                    <h5 className='card-title teal-text' style={{ padding: '2rem 1rem 0 1rem', fontWeight: '600' }}>
                         Features
                     </h5>
                 </div>
@@ -77,26 +77,22 @@ const About = () => {
                     <img src='./img/portrait.jpg' alt='Tamas Szitas Portrait' />
                 </div>
                 <div className='card-stacked'>
-                    <div className='card-content'>
+                    <div className={`card-content ${bgColor}`}>
                         <h4 className='teal-text'>About me</h4>
-                        <hr />
                         <p>
                             I am Tamas Szitas. At the time of creating this app I was attending the IT-Academy Dr Heuer in Bochum, Germany (January
                             2020). I am aiming to become a professional Web-Developer. I started learning React in December 2019 and I find React an
                             incredibly exciting and awesome library to use and to learn. My current goal is to have the MERN-Stack under my belt.
                         </p>
                     </div>
-                    <div className='card-action'>
-                        <p className='left' style={{ fontWeight: '600' }}>
-                            Reach out!
-                        </p>
+                    <div className='card-action' style={{ borderTop: '2px solid teal' }}>
                         <Link to='#!' className='blue-text text-darken-3 large fb-btn right' style={{ fontSize: '2rem' }}>
                             <i className='fab fa-facebook'></i>
                         </Link>
                         <Link to='#!' className='grey-text text-darken-3 large fb-btn right' style={{ fontSize: '2rem' }}>
                             <i className='fab fa-github'></i>
                         </Link>
-                        <Link to='#!' className='blue-text text-darken-1 large fb-btn right' style={{ fontSize: '2rem' }}>
+                        <Link to='#!' className='blue-text large fb-btn right' style={{ fontSize: '2rem' }}>
                             <i className='fab fa-linkedin'></i>
                         </Link>
                     </div>
