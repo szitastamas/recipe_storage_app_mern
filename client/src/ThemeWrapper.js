@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment } from 'react';
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
@@ -12,7 +12,6 @@ import { Alerts } from './components/utlity/Alerts';
 import { Logout } from './components/pages/Logout';
 import { PrivateRoute } from './components/utlity/PrivateRoute';
 import ToggleThemeBtn from './components/theme/ToggleThemeBtn';
-import ThemeContext from './contexts/theme/ThemeContext';
 import { LoadTheme } from './components/theme/LoadTheme';
 
 export const ThemeWrapper = () => {

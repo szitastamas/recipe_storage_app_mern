@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from '../../contexts/auth/AuthContext';
 import AlertContext from '../../contexts/alert/AlertContext';
-import { SET_ALERT } from '../../contexts/reducerTypes';
 import { LoadTheme } from '../theme/LoadTheme';
 
 const LoginForm = props => {
