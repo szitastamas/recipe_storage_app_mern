@@ -54,7 +54,6 @@ const About = () => {
                 <div className={`card-content ${uiColor} ${secondaryTextColor}`}>
                     <ul className='collection'>
                         {Object.values(aboutAppItems).map(item => {
-                            console.log(item);
                             return (
                                 <li key={item.title} className={`collection-item avatar ${bgColor} ${secondaryTextColor}`}>
                                     <i className={`material-icons circle ${item.iconColor}`}>{item.icon}</i>
@@ -75,7 +74,7 @@ const About = () => {
             </div>
             <div className={`card horizontal ${uiColor} ${secondaryTextColor}`}>
                 <div className='card-image'>
-                    <img src='./img/portrait.jpg' />
+                    <img src='./img/portrait.jpg' alt='Tamas Szitas Portrait' />
                 </div>
                 <div className='card-stacked'>
                     <div className='card-content'>

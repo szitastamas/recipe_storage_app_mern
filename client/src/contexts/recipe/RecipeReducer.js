@@ -1,8 +1,6 @@
 import {
     ADD_RECIPE,
     DELETE_RECIPE,
-    SET_CURRENT,
-    CLEAR_CURRENT,
     UPDATE_RECIPE,
     SET_RECIPE_FILTER,
     CLEAR_RECIPE_FILTER,
@@ -49,8 +47,8 @@ export default (state, action) => {
         case DELETE_RECIPE:
             return {
                 ...state,
-                ownRecipes: state.ownRecipes.filter(recipe => recipe._id != action.payload),
-                publicRecipes: state.publicRecipes.filter(recipe => recipe._id != action.payload),
+                ownRecipes: state.ownRecipes.filter(recipe => recipe._id !== action.payload),
+                publicRecipes: state.publicRecipes.filter(recipe => recipe._id !== action.payload),
                 loading: false
             };
         case SET_RECIPE_FILTER:

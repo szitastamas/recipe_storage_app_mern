@@ -5,7 +5,7 @@ import { LoadTheme } from '../theme/LoadTheme';
 
 const LoginForm = props => {
     const alertContext = useContext(AlertContext);
-    const { setAlert, clearAlerts } = alertContext;
+    const { setAlert } = alertContext;
 
     const authContext = useContext(AuthContext);
     const { login, clearErrors, error, isAuthenticated, loadUser } = authContext;

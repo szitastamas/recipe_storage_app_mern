@@ -3,17 +3,12 @@ import axios from 'axios';
 import RecipeContext from './RecipeContext';
 import RecipeReducer from './RecipeReducer';
 import AlertContext from '../alert/AlertContext';
-import AuthContext from '../auth/AuthContext';
 import {
     GET_PUBLIC_RECIPES,
     GET_OWN_RECIPES,
-    CLEAR_RECIPES,
     ADD_RECIPE,
     DELETE_RECIPE,
-    SET_CURRENT,
-    CLEAR_CURRENT,
     UPDATE_RECIPE,
-    FILTER_RECIPES,
     CLEAR_RECIPE_FILTER,
     SET_RECIPE_FILTER,
     TRIGGER_LOADING
@@ -31,7 +26,6 @@ const RecipeState = props => {
     const [state, dispatch] = useReducer(RecipeReducer, initialState);
     const alertContext = useContext(AlertContext);
     const { setAlert } = alertContext;
-    const authContext = useContext(AuthContext);
 
     const config = {
         headers: {

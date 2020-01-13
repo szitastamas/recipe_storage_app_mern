@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React from 'react';
 
 import setAuthToken from './components/utlity/SetAuthToken';
 import AlertState from './contexts/alert/AlertState';

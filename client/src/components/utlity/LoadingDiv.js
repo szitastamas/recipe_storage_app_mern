@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import BouncerLoading from './loading/BouncerLoading';
 import SpinnerLoading from './loading/SpinnerLoading';
 import PulserLoading from './loading/PulserLoading';
@@ -17,7 +17,7 @@ const LoadingDiv = ({ loaderType }) => {
         }
     };
 
-    return (getLoaderType());
+    return getLoaderType();
 };
 
 export default LoadingDiv;
