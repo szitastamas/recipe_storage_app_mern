@@ -1,0 +1,9 @@
+    import ThemeContext from '../../contexts/theme/ThemeContext';
+
+    const themeContext = useContext(ThemeContext);
+    
+    const { lightTheme, darkTheme, isDarkThemeActive, toggleDarkTheme } = themeContext;
+
+    const activeTheme = isDarkThemeActive ? darkTheme : lightTheme;
+
+    const { bgColor, uiColor, secondaryTextColor } = activeTheme;

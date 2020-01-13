@@ -1,21 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { LoadTheme } from '../theme/LoadTheme';
 
 const About = () => {
+    const activeTheme = LoadTheme();
+
+    const { uiColor, bgColor, mainTextColor, secondaryTextColor } = activeTheme;
+
     return (
-        <div className='container'>
+        <div className={`container ${bgColor}`}>
             <h2 className='teal-text center'>About the Recipe Storage App</h2>
 
             <br />
-            <div className='card'>
-                <div className='card-header'>
+            <div className={`card ${bgColor} ${secondaryTextColor}`}>
+                <div className={`card-header ${bgColor} ${secondaryTextColor}`}>
                     <h5 className='card-title teal-text' style={{ padding: '2rem 1rem 0 1rem' }}>
                         Features
                     </h5>
                 </div>
-                <div className='card-content'>
+                <div className={`card-content ${uiColor} ${secondaryTextColor}`}>
                     <ul className='collection'>
-                        <li className='collection-item avatar'>
+                        <li className={`collection-item avatar ${uiColor} ${secondaryTextColor}`}>
                             <i className='material-icons circle teal'>account_circle</i>
                             <span className='title teal-text'>Registration and login</span>
                             <p style={{ marginTop: '.6rem' }}>
@@ -26,7 +31,7 @@ const About = () => {
                                 personal Dashboard page.
                             </p>
                         </li>
-                        <li className='collection-item avatar'>
+                        <li className={`collection-item avatar ${uiColor} ${secondaryTextColor}`}>
                             <i className='material-icons circle blue lighten-2'>add_a_photo</i>
                             <span className='title  blue-text'>Upload public / private recipes</span>
                             <p style={{ marginTop: '.6rem' }}>
@@ -38,13 +43,13 @@ const About = () => {
                                 The user can also upload a picture of the food.
                             </p>
                         </li>
-                        <li className='collection-item avatar'>
+                        <li className={`collection-item avatar ${uiColor} ${secondaryTextColor}`}>
                             <i className='material-icons circle orange lighten-2'>add_to_queue</i>
                             <span className='title  orange-text'>Dashboard</span>
                             <p style={{ marginTop: '.6rem' }}>All users have a personal tab where they can check their public and private recipes.</p>
                             <p>Recipes can be added, updated and deleted from here. Apart from that all personal infos can be seen on this page.</p>
                         </li>
-                        <li className='collection-item avatar'>
+                        <li className={`collection-item avatar ${uiColor} ${secondaryTextColor}`}>
                             <i className='material-icons circle green lighten-2'>brush</i>
                             <span className='title  green-text'>Design</span>
                             <p style={{ marginTop: '.6rem' }}>The smooth general design of the application has been created with Materialize CSS.</p>
