@@ -282,6 +282,18 @@ i:hover {
     transition: 120ms background ease-out;
 }
 
+.progress-bar-container{
+    width: 100%;
+    height: 6px;
+    background: transparent;
+    margin-top: 1rem;
+}
+
+.progress-bar-container > .progress-bar{
+    height: 100%;
+    width: 0%;
+}
+
 @keyframes fadeIn {
     100% {
         transform: none;

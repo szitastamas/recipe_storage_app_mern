@@ -24,6 +24,10 @@ const RecipeSchema = mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    pic: {
+        type: String,
+        default: './img/default.jpg'
     }
 })
 

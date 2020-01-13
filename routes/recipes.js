@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../middleware/auth')
-const { check, validationResult } = require('express-validator')
+const auth = require('../middleware/auth');
+const { check, validationResult } = require('express-validator');
+const fileUpload = require('express-fileupload');
 
 const User = require('../models/User');
 const Recipe = require('../models/Recipe');
@@ -64,7 +65,7 @@ router.post('/', [auth, [
         return res.status(400).json({ errors: errors.array() })
     }
 
-    const { title, description, type, privacy, date } = req.body;
+    const { title, description, type, privacy, date, pic } = req.body;
 
     try {
         
@@ -74,7 +75,8 @@ router.post('/', [auth, [
             description,
             type,
             privacy,
-            date
+            date,
+            pic: picLocation
         })
 
         const recipe = await newRecipe.save();

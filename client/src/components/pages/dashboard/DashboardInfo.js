@@ -41,7 +41,7 @@ const DashboardInfo = () => {
       <ul className="collection">
         {Object.values(infoItems).map(item => {
           return (
-            <li className={`collection-item avatar ${bgColor}`}>
+            <li key={item.title} className={`collection-item avatar ${bgColor}`}>
               <i className={`material-icons circle ${item.color}`}>
                 {item.icon}
               </i>
