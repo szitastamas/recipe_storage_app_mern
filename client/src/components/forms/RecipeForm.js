@@ -61,7 +61,7 @@ export const RecipeForm = ({ recipeToEdit, cancel }) => {
     };
 
     const activeTheme = LoadTheme();
-    const { secondaryTextColor } = activeTheme;
+    const { secondaryTextColor, uiColor } = activeTheme;
 
     return (
         <Fragment>
@@ -86,7 +86,7 @@ export const RecipeForm = ({ recipeToEdit, cancel }) => {
                         <label htmlFor='type' className='left'>
                             Food type select
                         </label>
-                        <select id='type' value={recipe.type} onChange={handleChange} className={`${secondaryTextColor}`}>
+                        <select id='type' value={recipe.type} onChange={handleChange} className={`${uiColor} ${secondaryTextColor}`}>
                             <option value='soup'>Soup</option>
                             <option value='main'>Main</option>
                             <option value='dessert'>Dessert</option>
@@ -96,7 +96,7 @@ export const RecipeForm = ({ recipeToEdit, cancel }) => {
                         <label htmlFor='privacy' className='left'>
                             Privacy option select
                         </label>
-                        <select id='privacy' value={recipe.privacy} onChange={handleChange} className={`${secondaryTextColor}`}>
+                        <select id='privacy' value={recipe.privacy} onChange={handleChange} className={`${uiColor} ${secondaryTextColor}`}>
                             <option value='public'>Public</option>
                             <option value='private'>Private</option>
                         </select>

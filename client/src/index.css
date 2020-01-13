@@ -19,6 +19,15 @@ code {
     padding-bottom: 0.5rem;
 }
 
+.sidenav,
+#mobile-demo{
+    z-index: 10000 !important;
+}
+
+.sidenav-overlay{
+    z-index: -10 !important;
+}
+
 .recipe-card {
     opacity: 0;
     transform: translateX(-25px);
@@ -33,7 +42,9 @@ code {
 .card-content,
 .card-header,
 .container,
-.collection-item {
+.collection-item,
+input,
+select {
     transition: background 120ms ease-out;
 }
 
@@ -250,7 +261,7 @@ i {
 }
 
 i:hover {
-    color: rgb(48, 48, 48);
+    color: rgb(1, 123, 153);
 }
 
 /* TOGGLE THEME BUTTON */

@@ -88,12 +88,12 @@ const Navbar = ({ title, icon }) => {
 						<i className='small material-icons'>{icon}</i>
 						<span className='flow-text right'>{title}</span>
 					</Link>
-					<Link to='#' data-target='mobile-demo' className='sidenav-trigger teal-text hide-on-large-and-up'>
+					{/* <Link to='#' data-target='mobile-demo' className='sidenav-trigger teal-text hide-on-large-and-up'>
 						<i className='material-icons'>menu</i>
-					</Link>
+					</Link> */}
 				</div>
-				<div className='nav-content'>
-					<ul className='tabs tabs-transparent teal-text hide-on-med-and-down'>
+				<div className='nav-content align-left'>
+					<ul className='tabs tabs-transparent teal-text'>
 						<li>
 							<NavLink className='teal-text link-tag' to='/'>
 								Home
@@ -109,7 +109,7 @@ const Navbar = ({ title, icon }) => {
 				</div>
 			</nav>
 
-			<ul className='sidenav' id='mobile-demo'>
+			{/* <ul className='sidenav' id='mobile-demo'>
 				{isAuthenticated ? authMobileLinks : guestMobileLinks}
 				<li>
 					<NavLink className='teal-text' to='/'>
@@ -121,7 +121,7 @@ const Navbar = ({ title, icon }) => {
 						About
 					</NavLink>
 				</li>
-			</ul>
+			</ul> */}
 		</Fragment>
 	);
 };

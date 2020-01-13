@@ -66,7 +66,7 @@ const Dashboard = () => {
             ) : ownRecipes.length > 0 ? (
                 // <Recipes customGrid='dashboard-recipe-grid' title='Check all your own recipes' recipes={ownRecipes} />
                 <ul className='collection'>
-                    <div className='collection-item' key={'dashboard-list-header'}>
+                    <div className={`collection-item ${bgColor}`} key={'dashboard-list-header'}>
                         <div className='row'>
                             <div className='col s6 teal-text' style={{ fontWeight: '600', textTransform: 'uppercase' }}>
                                 Title
@@ -79,7 +79,7 @@ const Dashboard = () => {
                     </div>
                     {ownRecipes.map(recipe => {
                         return (
-                            <li key={recipe._id} className='collection-item'>
+                            <li key={recipe._id} className={`collection-item ${bgColor}`}>
                                 <div className='row'>
                                     <div
                                         className='col s6 teal-text'
