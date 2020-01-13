@@ -5,10 +5,7 @@ const About = () => {
     return (
         <div className='container'>
             <h2 className='teal-text center'>About the Recipe Storage App</h2>
-            <p className='center' style={{ textTransform: 'uppercase' }}>
-                This application has been built on the MERN-Stack - ReactJS on the Front-End, NodeJS (Express) on the Back-End and MongoDB (in the
-                Cloud) as a database.
-            </p>
+
             <br />
             <div className='card'>
                 <div className='card-header'>
@@ -55,6 +52,12 @@ const About = () => {
                         </li>
                     </ul>
                 </div>
+                <div className='card-action'>
+                    <p className='center'>
+                        This application has been built on the MERN-Stack - ReactJS on the Front-End, NodeJS (Express) on the Back-End and MongoDB (in
+                        the Cloud) as a database.
+                    </p>
+                </div>
             </div>
             <div className='card horizontal'>
                 <div className='card-image'>
@@ -71,6 +74,9 @@ const About = () => {
                         </p>
                     </div>
                     <div className='card-action'>
+                        <p className='left' style={{ fontWeight: '600' }}>
+                            Reach out!
+                        </p>
                         <Link to='#!' className='blue-text text-darken-3 large fb-btn right' style={{ fontSize: '2rem' }}>
                             <i className='fab fa-facebook'></i>
                         </Link>
