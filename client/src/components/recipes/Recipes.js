@@ -4,7 +4,7 @@ import RecipeItem from './RecipeItem';
 import LoadingDiv from '../utlity/LoadingDiv';
 import RecipeDetails from './RecipeDetails';
 
-const Recipes = ({ customGrid, title, recipes }) => {
+const Recipes = ({ title, recipes }) => {
 	const recipeContext = useContext(RecipeContext);
 	const { loading } = recipeContext;
 

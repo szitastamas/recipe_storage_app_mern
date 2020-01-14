@@ -66,7 +66,7 @@ const RecipeState = props => {
     // Add recipe
     const addRecipe = async recipe => {
         try {
-            const res = await axios.post('/api/recipes', recipe, config);
+            const res = await axios.post('/api/recipes', recipe);
             dispatch({
                 type: ADD_RECIPE,
                 payload: res.data
@@ -78,26 +78,7 @@ const RecipeState = props => {
         }
     };
 
-    const uploadPicture = async pic => {
-        const randomId = uuid();
-        const picName = `${randomId}${pic.name}`;
-        console.log(picName);
-        console.log(pic);
-        const formData = new FormData();
-        formData.append('file', pic);
 
-        try {
-            const res = await axios.post('/api/upload', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            return res.data;
-        } catch (err) {
-            setAlert('Uploading photo failed.', 'fail');
-            throw new Error(err.message);
-        }
-    };
 
     // Update recipe
     const updateRecipe = async recipe => {
@@ -171,8 +152,8 @@ const RecipeState = props => {
                 updateRecipe,
                 setRecipeFilter,
                 clearRecipeFilter,
-                triggerLoading,
-                uploadPicture
+                triggerLoading
+                
             }}
         >
             {props.children}

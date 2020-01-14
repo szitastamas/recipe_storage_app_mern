@@ -10,6 +10,8 @@ connectDB();
 app.use(express.json({ extended: false }));
 app.use(fileUpload());
 
+app.use('/client/public/uploads', express.static('./client/public/uploads'))
+
 // Setting up the routes which will be separate js files within the routes folder
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
