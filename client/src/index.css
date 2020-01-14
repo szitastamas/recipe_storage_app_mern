@@ -20,11 +20,11 @@ code {
 }
 
 .sidenav,
-#mobile-demo{
+#mobile-demo {
     z-index: 10000 !important;
 }
 
-.sidenav-overlay{
+.sidenav-overlay {
     z-index: -10 !important;
 }
 
@@ -282,14 +282,14 @@ i:hover {
     transition: 120ms background ease-out;
 }
 
-.progress-bar-container{
+.progress-bar-container {
     width: 100%;
     height: 6px;
     background: transparent;
     margin-top: 1rem;
 }
 
-.progress-bar-container > .progress-bar{
+.progress-bar-container > .progress-bar {
     height: 100%;
     width: 0%;
 }

@@ -6,7 +6,8 @@ import {
     CLEAR_RECIPE_FILTER,
     GET_PUBLIC_RECIPES,
     GET_OWN_RECIPES,
-    TRIGGER_LOADING
+    TRIGGER_LOADING,
+    UPLOAD_PICTURE
 } from '../reducerTypes';
 
 export default (state, action) => {
