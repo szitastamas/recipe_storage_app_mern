@@ -11,7 +11,8 @@ export const RecipeForm = ({ recipeToEdit, cancel }) => {
         date: new Date()
             .toJSON()
             .slice(0, 10)
-            .replace(/-/g, '.')
+            .replace(/-/g, '.'),
+        picLocation: ''
     });
 
     const [editState, setEditState] = useState(false);
@@ -24,11 +25,17 @@ export const RecipeForm = ({ recipeToEdit, cancel }) => {
     }, [recipeToEdit]);
     const recipeContext = useContext(RecipeContext);
 
-    const { addRecipe, updateRecipe } = recipeContext;
+    const { addRecipe, updateRecipe, uploadPicture } = recipeContext;
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
 
+        if (!editState) {
+            setRecipe({
+                ...recipe,
+                picLocation: await uploadPicture(pic)
+            });
+        }
         editState ? updateRecipe(recipe) : addRecipe(recipe);
         resetForm();
     };
