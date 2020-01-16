@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
-const { check, validationResult } = require('express-validator');
-const fileUpload = require('express-fileupload');
+// const { check, validationResult } = require('express-validator');
 const multer = require('multer');
 const User = require('../models/User');
 const Recipe = require('../models/Recipe');
 const uuid = require('uuid');
 const path = require('path');
+const fs = require('fs');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -77,62 +77,59 @@ router.get('/public', async (req, res) => {
 // @route   POST api/recipes
 // @desc    Add a new recipe
 // @access  Private
-router.post(
-    '/',
-    // [
-    //     // auth,
-    // [
-    //     check('title', 'Title is required.')
-    //         .not()
-    //         .isEmpty(),
-    //     check('description', 'Description is required')
-    //         .not()
-    //         .isEmpty()
-    // ],
-    //     upload.single('file')
-    // ],
-    async (req, res) => {
-        //const errors = validationResult(req.body);
+router.post('/', auth, async (req, res) => {
+    //const errors = validationResult(req.body);
 
-        // if (!errors.isEmpty()) {
-        //     return res.status(400).json({ errors: errors.array() });
-        // }
+    const errors = [];
+    const userId = req.user;
+    const { title, description, type, privacy, date } = req.body;
+    req.body.map(item => {
+        if (item.length === 0 || item == '') {
+            errors.push(`${item} is required!`);
+        }
+    });
 
-        const { title, description, type, privacy, date } = req.body;
-        const { pic } = req.files;
-        console.log(title, description, type, privacy, date, pic);
+    if (errors.length > 0) {
+        return res.status(400).json({ msg: errors });
+    }
+    const { pic } = req.files;
+
+    let picLocation;
+    if (pic) {
+        if (!fs.existsSync(path.join(__dirname, '..', `/client/public/uploads/${userId}`))) {
+            fs.mkdir(path.join(__dirname, '..', `/client/public/uploads/${userId}`));
+        }
 
         const randomID = uuid.v4();
         const picName = randomID + '_' + pic.name;
-        const picLocation = path.join(__dirname, '..', `/client/public/uploads/${picName}`);
-        console.log(picLocation);
+        picLocation = path.join(__dirname, '..', `/client/public/uploads/${userId}/${picName}`);
 
         pic.mv(picLocation, err => {
             if (err) {
-                console.log(err);
+                console.log(err.message);
                 return res.status(500).json({ msg: 'Bad Request. File Upload Failed.' });
             }
         });
-
-        try {
-            const newRecipe = new Recipe({
-                user: req.user.id,
-                title,
-                description,
-                type,
-                privacy,
-                date,
-                pic
-            });
-
-            const recipe = await newRecipe.save();
-            res.json(recipe);
-        } catch (err) {
-            console.error(err.message);
-            return res.status(500).send('Server Error');
-        }
     }
-);
+
+    try {
+        const newRecipe = new Recipe({
+            user: req.user.id,
+            title,
+            description,
+            type,
+            privacy,
+            date,
+            pic: picLocation
+        });
+
+        const recipe = await newRecipe.save();
+        res.json(recipe);
+    } catch (err) {
+        console.error(err.message);
+        return res.status(500).send('Server Error');
+    }
+});
 
 // @route   PUT api/recipes/:id
 // @desc    Update Recipe
