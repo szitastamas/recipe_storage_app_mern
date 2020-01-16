@@ -1,52 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
-// const { check, validationResult } = require('express-validator');
-const multer = require('multer');
-const User = require('../models/User');
 const Recipe = require('../models/Recipe');
 const uuid = require('uuid');
 const path = require('path');
 const fs = require('fs');
-
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, '../client/public/uploads/');
-    },
-    fileName: (req, file, cb) => {
-        cb(null, new Date().toISOString() + file.originalname);
-    }
-});
-
-const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png') {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
-};
-const upload = multer({
-    storage: storage,
-    limits: {
-        fileSize: 1024 * 1024
-    },
-    fileFilter: fileFilter
-});
-
-// @route   GET api/recipes
-// @desc    Get all user's recipes
-// @access  Private
-// router.get('/', auth, async (req, res) => {
-
-//     try {
-//         const recipes = await Recipe.find({ user: req.user.id });
-//         res.json(recipes)
-//     } catch (err) {
-//         console.error(err.message);
-//         res.status(500).send("Server Error")
-//     }
-
-// })
 
 // @route   GET api/user/:id
 // @desc    Get one user's own recipes
@@ -81,10 +39,10 @@ router.post('/', auth, async (req, res) => {
     //const errors = validationResult(req.body);
 
     const errors = [];
-    const userId = req.user;
+    const userId = req.user.id;
     const { title, description, type, privacy, date } = req.body;
-    req.body.map(item => {
-        if (item.length === 0 || item == '') {
+    Object.keys(req.body).map(item => {
+        if (req.body[item].length === 0 || req.body[item] == '') {
             errors.push(`${item} is required!`);
         }
     });
@@ -92,17 +50,18 @@ router.post('/', auth, async (req, res) => {
     if (errors.length > 0) {
         return res.status(400).json({ msg: errors });
     }
-    const { pic } = req.files;
+    
 
     let picLocation;
-    if (pic) {
+    if (req.files) {
+        const { pic } = req.files;
         if (!fs.existsSync(path.join(__dirname, '..', `/client/public/uploads/${userId}`))) {
-            fs.mkdir(path.join(__dirname, '..', `/client/public/uploads/${userId}`));
+            fs.mkdirSync(path.join(__dirname, '..', `/client/public/uploads/${userId}`));
         }
 
         const randomID = uuid.v4();
         const picName = randomID + '_' + pic.name;
-        picLocation = path.join(__dirname, '..', `/client/public/uploads/${userId}/${picName}`);
+        picLocation = path.join(`./`, `/client/public/uploads/${userId}/${picName}`);
 
         pic.mv(picLocation, err => {
             if (err) {
@@ -187,6 +146,15 @@ router.delete('/:id', auth, async (req, res) => {
             return res.status(401).json({ msg: 'Not authorized.' });
         }
 
+        if(!recipe.pic.includes('img/default')){
+            fs.unlink(recipe.pic, err => {
+                if(err){
+                    console.log(err.message);
+                    return res.status(500).json({ msg: "Photo couldn't be deleted." })
+                }
+                console.log(`${recipe.title}'s photo has been removed.`)
+            })
+        }
         // Re-initializing the recipe variable
         // Finding the recipe via the ID that arrived from the request parameters
         // Setting the recipe in the Recipe Collection to the recipeFields object -->

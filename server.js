@@ -4,7 +4,7 @@ const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const app = express();
 
-//connectDB();
+connectDB();
 
 // Init middleware to be able to extract request body
 app.use(express.json({ extended: false }));
@@ -22,7 +22,6 @@ app.use('/client/public/uploads', express.static('./client/public/uploads'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/recipes', require('./routes/recipes'));
-app.use('/api/upload', require('./routes/upload'));
 
 // Setting up the production and the development PORT
 const PORT = process.env.PORT || 5000;
