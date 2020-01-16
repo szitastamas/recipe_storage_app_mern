@@ -64,9 +64,14 @@ const RecipeState = props => {
     };
 
     // Add recipe
-    const addRecipe = async recipe => {
+    const addRecipe = async formData => {
         try {
-            const res = await axios.post('/api/recipes', recipe);
+            const res = await axios.post('/api/recipes', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            console.log(res.data);
             dispatch({
                 type: ADD_RECIPE,
                 payload: res.data
@@ -78,7 +83,10 @@ const RecipeState = props => {
         }
     };
 
-
+    // Upload photo to recipe
+    const uploadPic = async (pic, recipeId) => {
+        const res = await axios.post(`/api/recipes/${recipeId}/upload/`);
+    };
 
     // Update recipe
     const updateRecipe = async recipe => {
@@ -152,8 +160,8 @@ const RecipeState = props => {
                 updateRecipe,
                 setRecipeFilter,
                 clearRecipeFilter,
-                triggerLoading
-                
+                triggerLoading,
+                uploadPic
             }}
         >
             {props.children}

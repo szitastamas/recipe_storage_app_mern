@@ -1,16 +1,22 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const fileUpload = require('express-fileupload');
+const cors = require('cors');
 const app = express();
 
-
-connectDB();
+//connectDB();
 
 // Init middleware to be able to extract request body
 app.use(express.json({ extended: false }));
-app.use(fileUpload());
 
-app.use('/client/public/uploads', express.static('./client/public/uploads'))
+const corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200
+};
+
+app.use(fileUpload());
+app.use(cors(corsOptions));
+app.use('/client/public/uploads', express.static('./client/public/uploads'));
 
 // Setting up the routes which will be separate js files within the routes folder
 app.use('/api/users', require('./routes/users'));
