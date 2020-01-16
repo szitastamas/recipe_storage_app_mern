@@ -1,8 +1,6 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react';
 import RecipeContext from '../../contexts/recipe/RecipeContext';
 import { LoadTheme } from '../theme/LoadTheme';
-import uuid from 'uuid';
-// import PicUploadForm from "./PicUploadForm";
 
 export const RecipeForm = ({ recipeToEdit, cancel }) => {
     const [recipe, setRecipe] = useState({
@@ -26,7 +24,7 @@ export const RecipeForm = ({ recipeToEdit, cancel }) => {
     }, [recipeToEdit]);
     const recipeContext = useContext(RecipeContext);
 
-    const { addRecipe, updateRecipe, uploadPic } = recipeContext;
+    const { addRecipe, updateRecipe } = recipeContext;
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -119,8 +117,8 @@ export const RecipeForm = ({ recipeToEdit, cancel }) => {
                                 <input type='file' name='file' onChange={handleFileChange} />
                                 <span>File</span>
                             </div>
-                            <div className='file-path-wrapper'>
-                                <input type='text' className={`file-path validate ${uiColor} ${secondaryTextColor}`} placeholder='Upload photo' />
+                            <div className={`file-path-wrapper ${uiColor} ${secondaryTextColor}`}>
+                                <input type='text' className={`file-path validate`} placeholder='Upload photo' />
                             </div>
                         </div>
                         <button type='submit' className='btn submit-btn waves-effect waves-light'>

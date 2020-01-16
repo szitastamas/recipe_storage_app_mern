@@ -6,8 +6,7 @@ import {
     CLEAR_RECIPE_FILTER,
     GET_PUBLIC_RECIPES,
     GET_OWN_RECIPES,
-    TRIGGER_LOADING,
-    UPLOAD_PICTURE
+    TRIGGER_LOADING
 } from '../reducerTypes';
 
 export default (state, action) => {
@@ -30,6 +29,13 @@ export default (state, action) => {
                 loading: false
             };
         case CLEAR_RECIPE_FILTER:
+            return{
+                ...state,
+                filterText: '',
+                filteredRecipes: [],
+                loading: false
+            }
+
         case GET_PUBLIC_RECIPES:
             return {
                 ...state,
@@ -57,11 +63,12 @@ export default (state, action) => {
                 ...state,
                 filterText: action.payload,
                 filteredRecipes: state.publicRecipes.filter(recipe => {
+                    const { title, description, type } = recipe;
                     return (
-                        recipe.title.toLowerCase().includes(state.filterText.toLowerCase()) ||
-                        recipe.description.toLowerCase().includes(state.filterText.toLowerCase()) ||
-                        recipe.type.toLowerCase().includes(state.filterText.toLowerCase())
-                    );
+                        title.toLowerCase().indexOf(state.filterText.toLowerCase()) !== -1 ||
+                        description.toLowerCase().indexOf(state.filterText.toLowerCase()) !== -1 ||
+                        type.toLowerCase().indexOf(state.filterText.toLowerCase()) !== -1
+                    )
                 })
             };
         default:

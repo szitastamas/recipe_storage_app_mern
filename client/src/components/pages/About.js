@@ -5,6 +5,8 @@ import { LoadTheme } from '../theme/LoadTheme';
 const About = () => {
     const activeTheme = LoadTheme();
 
+    const isHorizontalCard = window.innerWidth > 600 ? "horizontal" : "";
+
     const { uiColor, bgColor, mainTextColor, secondaryTextColor } = activeTheme;
 
     const aboutAppItems = {
@@ -72,7 +74,7 @@ const About = () => {
                     </p>
                 </div>
             </div>
-            <div className={`card horizontal ${uiColor} ${secondaryTextColor}`}>
+            <div className={`card ${isHorizontalCard} ${uiColor} ${secondaryTextColor}`}>
                 <div className='card-image'>
                     <img src='./img/portrait.jpg' alt='Tamas Szitas Portrait' />
                 </div>
@@ -86,13 +88,13 @@ const About = () => {
                         </p>
                     </div>
                     <div className='card-action' style={{ borderTop: '2px solid teal' }}>
-                        <Link to='#!' className='blue-text text-darken-3 large fb-btn right' style={{ fontSize: '2rem' }}>
+                        <Link to='#!' className='blue-text text-darken-3 large fb-btn' style={{ fontSize: '2rem' }}>
                             <i className='fab fa-facebook'></i>
                         </Link>
-                        <Link to='#!' className='grey-text text-darken-3 large fb-btn right' style={{ fontSize: '2rem' }}>
+                        <Link to='#!' className='grey-text text-darken-3 large fb-btn' style={{ fontSize: '2rem' }}>
                             <i className='fab fa-github'></i>
                         </Link>
-                        <Link to='#!' className='blue-text large fb-btn right' style={{ fontSize: '2rem' }}>
+                        <Link to='#!' className='blue-text large fb-btn' style={{ fontSize: '2rem' }}>
                             <i className='fab fa-linkedin'></i>
                         </Link>
                     </div>

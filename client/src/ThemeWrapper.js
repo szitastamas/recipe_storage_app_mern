@@ -32,8 +32,7 @@ export const ThemeWrapper = () => {
                                         <Route exact path='/' component={Home} />
                                         <Route exact path='/login' component={LoginForm} />
                                         <Route exact path='/register' component={RegisterForm} />
-                                        {/* <PrivateRoute exact path='/dashboard' component={Dashboard} /> */}
-                                        <Route exact path='/dashboard' component={Dashboard} />
+                                        <PrivateRoute exact path='/dashboard' component={Dashboard} />
                                         <Route exact path='/logout' component={Logout} />
                                         <Route exact path='/about' component={About} />
                                     </Switch>

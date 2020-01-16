@@ -24,7 +24,7 @@ const Recipes = ({ title, recipes }) => {
 				<h2 className='flow-text card-title teal-text text-lighten-2'>{title}</h2>
 			</div>
 			{!loading ? (
-				<div className='row'>
+				<div className='home-recipe-grid'>
 					{recipes.map((recipe, index) => {
 						return <RecipeItem key={recipe._id} recipe={recipe} index={index} showDetails={showDetails} />;
 					})}

@@ -4,12 +4,14 @@ import { LoadTheme } from '../theme/LoadTheme';
 
 export const SearchBar = () => {
     const recipeContext = useContext(RecipeContext);
-    const { setRecipeFilter } = recipeContext;
+    const { setRecipeFilter, clearRecipeFilter } = recipeContext;
 
-    const [filter, setFilter] = useState('');
     const handleChange = e => {
-        setFilter(e.target.value);
-        setRecipeFilter(e.target.value);
+        if(e.target.value.length === 0 || e.target.value === ' '){
+            clearRecipeFilter();
+        }else{
+            setRecipeFilter(e.target.value)
+        }
     };
 
     const activeTheme = LoadTheme();
@@ -22,7 +24,6 @@ export const SearchBar = () => {
                         type='text'
                         name='filter'
                         id='filter'
-                        value={filter}
                         onChange={handleChange}
                         className={`${activeTheme.secondaryTextColor}`}
                     />

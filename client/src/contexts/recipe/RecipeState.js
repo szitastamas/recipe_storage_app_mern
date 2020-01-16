@@ -12,8 +12,7 @@ import {
     UPDATE_RECIPE,
     CLEAR_RECIPE_FILTER,
     SET_RECIPE_FILTER,
-    TRIGGER_LOADING,
-    UPLOAD_PICTURE
+    TRIGGER_LOADING
 } from '../reducerTypes';
 
 const RecipeState = props => {
@@ -83,14 +82,8 @@ const RecipeState = props => {
         }
     };
 
-    // Upload photo to recipe
-    const uploadPic = async (pic, recipeId) => {
-        const res = await axios.post(`/api/recipes/${recipeId}/upload/`);
-    };
-
     // Update recipe
     const updateRecipe = async recipe => {
-        console.log('Updating recipe...');
 
         try {
             const res = await axios.put(`/api/recipes/${recipe._id}`, recipe, config);
@@ -160,8 +153,7 @@ const RecipeState = props => {
                 updateRecipe,
                 setRecipeFilter,
                 clearRecipeFilter,
-                triggerLoading,
-                uploadPic
+                triggerLoading
             }}
         >
             {props.children}

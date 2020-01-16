@@ -25,7 +25,7 @@ const RecipeItem = ({ recipe, index, showDetails }) => {
         style={{ animationDelay: index * 70 + "ms" }}
       >
         <div className="card-image">
-          <img src={recipe.pic} alt="uploaded food" />
+          <img src={recipe.pic} alt="uploaded food"/>
           <span className="card-title" style={capitalize}>
             {recipe.title}
           </span>
@@ -62,5 +62,6 @@ RecipeItem.propTypes = {
 };
 
 const capitalize = { textTransform: "capitalize" };
+
 
 export default RecipeItem;

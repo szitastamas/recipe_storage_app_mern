@@ -44,7 +44,8 @@ code {
 .container,
 .collection-item,
 input,
-select {
+select,
+.file-path-wrapper {
     transition: background 120ms ease-out;
 }
 
@@ -105,13 +106,27 @@ select {
     animation: fadeIn 600ms forwards;
 }
 
-/* .home-recipe-grid {
-	max-width: 75%;
-	margin: 1rem auto;
+.home-recipe-grid {
+	margin: 1rem 0;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	grid-gap: 0.7rem;
-} */
+	grid-template-columns: repeat(auto-fit, 250px);
+    grid-gap: 0.7rem;
+}
+
+.recipe-card .card-image {
+    min-height: 20rem;
+    max-height: 20rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipe-card .card-image img{
+    min-height: 20rem;
+    max-height: 20rem;
+    max-width: 300px;
+}
 
 /* SpinnerLoading */
 
