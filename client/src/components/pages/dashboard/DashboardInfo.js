@@ -9,12 +9,6 @@ const DashboardInfo = () => {
   const infoItems = {
     add: {
       icon: "add",
-      iconColor: "teal",
-      p:
-        "You can simply add a recipe by typing in its title and some description. If no photo chosen, a default picture will be attached."
-    },
-    add: {
-      icon: "add",
       color: "teal",
       title: "Adding a recipe",
       p:

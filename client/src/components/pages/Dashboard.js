@@ -46,7 +46,7 @@ const Dashboard = () => {
 
     const activeTheme = LoadTheme();
 
-    const { uiColor, bgColor, mainTextColor, secondaryTextColor } = activeTheme;
+    const { bgColor, secondaryTextColor } = activeTheme;
 
     return (
         <div className='col s12 l6'>

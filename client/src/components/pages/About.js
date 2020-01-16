@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { LoadTheme } from '../theme/LoadTheme';
 
 const About = () => {
@@ -88,15 +87,15 @@ const About = () => {
                         </p>
                     </div>
                     <div className='card-action' style={{ borderTop: '2px solid teal' }}>
-                        <Link to='#!' className='blue-text text-darken-3 large fb-btn' style={{ fontSize: '2rem' }}>
+                        <a href='https://www.facebook.com/szitas.tamas.3' className='blue-text text-darken-3 large fb-btn' style={{ fontSize: '2rem' }} target="_blank">
                             <i className='fab fa-facebook'></i>
-                        </Link>
-                        <Link to='#!' className='grey-text text-darken-3 large fb-btn' style={{ fontSize: '2rem' }}>
+                        </a>
+                        <a href='https://github.com/szitastamas' className='grey-text text-darken-3 large fb-btn' style={{ fontSize: '2rem' }} target="_blank">
                             <i className='fab fa-github'></i>
-                        </Link>
-                        <Link to='#!' className='blue-text large fb-btn' style={{ fontSize: '2rem' }}>
+                        </a>
+                        <a href='https://www.linkedin.com/in/szitastamas/' className='blue-text large fb-btn' style={{ fontSize: '2rem' }} target="_blank">
                             <i className='fab fa-linkedin'></i>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import RecipeContext from '../../contexts/recipe/RecipeContext';
 import { LoadTheme } from '../theme/LoadTheme';
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { LoadTheme } from '../theme/LoadTheme';
 
 const RecipeDetails = ({ recipe, removeDetails }) => {
-    const { title, description, type, privacy, date, picture } = recipe;
+    const { title, description, type, privacy, date } = recipe;
 
     useEffect(() => {
         document.querySelector('.overlay').addEventListener('click', e => {
@@ -20,7 +20,7 @@ const RecipeDetails = ({ recipe, removeDetails }) => {
 
     const activeTheme = LoadTheme();
 
-    const { uiColor, bgColor, mainTextColor, secondaryTextColor } = activeTheme;
+    const { uiColor, secondaryTextColor } = activeTheme;
 
     return (
         <div id='recipe-detail-modal'>

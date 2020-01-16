@@ -3,7 +3,6 @@ import axios from 'axios';
 import RecipeContext from './RecipeContext';
 import RecipeReducer from './RecipeReducer';
 import AlertContext from '../alert/AlertContext';
-import uuid from 'uuid';
 import {
     GET_PUBLIC_RECIPES,
     GET_OWN_RECIPES,
