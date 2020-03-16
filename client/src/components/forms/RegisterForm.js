@@ -54,6 +54,7 @@ const RegisterForm = props => {
                 email,
                 password
             });
+            setAlert('Registration successful!', 'success');
         }
     };
 

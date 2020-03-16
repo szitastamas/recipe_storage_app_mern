@@ -69,7 +69,6 @@ const RecipeState = props => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log(res.data);
             dispatch({
                 type: ADD_RECIPE,
                 payload: res.data
@@ -83,7 +82,6 @@ const RecipeState = props => {
 
     // Update recipe
     const updateRecipe = async recipe => {
-
         try {
             const res = await axios.put(`/api/recipes/${recipe._id}`, recipe, config);
 

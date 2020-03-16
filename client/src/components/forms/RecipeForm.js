@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import RecipeContext from '../../contexts/recipe/RecipeContext';
 import { LoadTheme } from '../theme/LoadTheme';
 
@@ -32,10 +33,6 @@ export const RecipeForm = ({ recipeToEdit, cancel }) => {
         Object.entries(recipe).forEach(attr => {
             formData.append(attr[0], attr[1]);
         });
-
-        for (var pair of formData.entries()) {
-            console.log(pair[0] + ', ' + pair[1]);
-        }
 
         editState ? updateRecipe(recipe) : addRecipe(formData);
         resetForm();
@@ -83,11 +80,11 @@ export const RecipeForm = ({ recipeToEdit, cancel }) => {
             <form id='add-form center' onSubmit={handleSubmit}>
                 <div className='input-field'>
                     <input type='text' name='title' value={recipe.title} onChange={handleChange} className={`${secondaryTextColor}`} />
-                    <label htmlFor='title'>Title</label>
+                    {!editState && <label htmlFor='title'>Title</label>}
                 </div>
                 <div className='input-field'>
                     <input type='text' name='description' value={recipe.description} onChange={handleChange} className={`${secondaryTextColor}`} />
-                    <label htmlFor='description'>Description</label>
+                    {!editState && <label htmlFor='description'>Description</label>}
                 </div>
                 <div className='row'>
                     <div className='col s6'>
@@ -130,9 +127,9 @@ export const RecipeForm = ({ recipeToEdit, cancel }) => {
                         <button type='submit' className='btn submit-btn green lighten-1 waves-effect waves-light'>
                             Update Recipe
                         </button>
-                        <button onClick={handleCancel} className='btn submit-btn orange lighten-3 waves-effect waves-light'>
+                        <Link to='#' onClick={handleCancel} className='btn submit-btn orange lighten-3 waves-effect waves-light'>
                             Cancel
-                        </button>
+                        </Link>
                     </Fragment>
                 )}
             </form>
